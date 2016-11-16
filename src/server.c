@@ -3,15 +3,12 @@
  ******************************************************************************/
 
 #include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <string.h>
-
-#define PACKET_SIZE 1024
-#define MAX_LINE 1024
+#include "rudp_packet.h"
 
 /*******************************************************************************
  * Server main method. Expects a port number as a command line argument
@@ -21,9 +18,10 @@
  * @return
  ******************************************************************************/
 int main(int argc, char **argv){
-    int sockfd, len;
+    int sockfd, len, bytes_read;
     struct sockaddr_in serveraddr, clientaddr;
     char filename[MAX_LINE];
+    unsigned char read_buf[RUDP_DATA];
     FILE *file;
 
     /*Check command line arguments*/
@@ -49,10 +47,10 @@ int main(int argc, char **argv){
 
     /*Get file name from client*/
     len = sizeof(struct sockaddr_in);
-    int n = (int) recvfrom(sockfd, filename, MAX_LINE, 0, (struct sockaddr*)&clientaddr,
+    bytes_read = (int) recvfrom(sockfd, filename, MAX_LINE, 0, (struct sockaddr*)&clientaddr,
                            (socklen_t *) &len);
-    printf("Received %d characters\n", n);
-    filename[n] = '\0';
+    printf("Received %d characters\n", bytes_read);
+    filename[bytes_read] = '\0';
     fprintf(stdout, "Requested file: %s\n", filename);
 
     /*Attempt to open the file*/
@@ -64,6 +62,21 @@ int main(int argc, char **argv){
     }
 
     fprintf(stdout, "Successfully opened %s\n", filename);
+
+    int count = 0;
+    while(!feof(file) && !ferror(file)){
+        bytes_read = (int) fread(read_buf, 1, RUDP_DATA, file);
+        if(ferror(file)){
+            fprintf(stderr, "File read error\n");
+            break;
+        }
+        if(bytes_read > 0){
+            //TODO: create RUDP packet and send to client
+            fprintf(stdout, "Read %d bytes\n", bytes_read);
+            count += bytes_read;
+        }
+    }
+    printf("%d total bytes read\n", count);
 
     /*Clean up*/
     fclose(file);

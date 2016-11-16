@@ -4,13 +4,10 @@
 
 #include <unistd.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <string.h>
-
-#define MAX_LINE 1024
+#include "rudp_packet.h"
 
 int main(int argc, char **argv){
     int sockfd;
