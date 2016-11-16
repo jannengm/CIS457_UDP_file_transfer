@@ -10,12 +10,14 @@
 #include "rudp_packet.h"
 
 int main(int argc, char **argv){
-    int sockfd;
+    int sockfd, count, len;
+    ssize_t bytes_read;
     struct sockaddr_in serveraddr;
-    char filename[MAX_LINE];
+    char filename[MAX_LINE], read_buf[RUDP_DATA];
 
+    /*Check command line arguments*/
     if(argc != 3) {
-        fprintf(stderr, "Usage: %s [Port] [IPv4 address]", argv[0]);
+        fprintf(stderr, "Usage: %s [Port] [IPv4 address]\n", argv[0]);
         exit(1);
     }
 
@@ -40,6 +42,21 @@ int main(int argc, char **argv){
     fprintf(stdout, "Requesting %s from server...\n", filename);
     sendto(sockfd, filename, strlen(filename), 0,
            (struct sockaddr*)&serveraddr, sizeof(struct sockaddr_in) );
+
+    /*Read file from server*/
+    count = 0;
+    len = sizeof(struct sockaddr_in);
+    do{
+        bytes_read = recvfrom(sockfd, read_buf, RUDP_DATA, 0,
+                                    (struct sockaddr*)&serveraddr,
+                                    (socklen_t *) &len);
+        fprintf(stdout, "Got %d byte packet\n", (int)bytes_read);
+        count += bytes_read;
+
+        //TODO:Write data to file
+
+    }while(bytes_read == RUDP_DATA);
+    fprintf(stdout, "%d total bytes received\n", count);
 
     /*Clean up*/
     close(sockfd);

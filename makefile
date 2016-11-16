@@ -13,3 +13,4 @@ rudp_packet.o:
 
 clean:
 	rm *.o
+	rm src/*.gch
