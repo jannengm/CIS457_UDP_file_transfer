@@ -69,6 +69,87 @@ u_int16_t calc_checksum(rudp_packet_t * rudp_pk){
     return checksum;
 }
 
-void free_rudp_packet(rudp_packet_t * rudp_pk){
+/*******************************************************************************
+ *
+ * @param window
+ * @return
+ ******************************************************************************/
+bool is_full(rudp_packet_t * window[]){
+    return (bool) (window[0] == NULL);
+}
 
+/*******************************************************************************
+ *
+ * @param window
+ * @return
+ ******************************************************************************/
+bool is_empty(rudp_packet_t * window[]){
+    int i;
+    for(i = 0; i < WINDOW_SIZE; i++){
+        if(window[i] != NULL){
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
+
+/*******************************************************************************
+ *
+ * @param window
+ * @param file
+ ******************************************************************************/
+void fill_window(rudp_packet_t * window[], FILE *file){
+    int i;
+    unsigned char buffer[MAX_LINE];
+    ssize_t bytes_read;
+    rudp_packet_t *rudp_pkt;
+
+    for(i = 0; i < WINDOW_SIZE && window[i] == NULL; i++){
+        memset(buffer, 0, MAX_LINE);
+        /*Read up to RUDP_DATA bytes from file*/
+        bytes_read = fread(buffer, 1, RUDP_DATA, file);
+        if(ferror(file)){
+            fprintf(stderr, "File read error\n");
+            break;
+        }
+
+        /*If bytes successfully read in, send RUDP packet*/
+        if(bytes_read > 0) {
+            /*Create a new RUDP packet*/
+            rudp_pkt = create_rudp_packet(buffer, (size_t) bytes_read);
+
+            /*If file reached EOF, flag as the last packet*/
+            if (feof(file)) {
+                rudp_pkt->seq_num = END_SEQ;
+                rudp_pkt->checksum = 0;
+                rudp_pkt->checksum = calc_checksum(rudp_pkt);
+            }
+
+            /*Insert new RUDP packet into window*/
+            window[i] = rudp_pkt;
+        }
+    }
+}
+
+/*******************************************************************************
+ * Searches through the window of RUDP packets for the specificied sequence
+ * number. Deallocates memory for the packet, sets the window slot to be NULL,
+ * and returns TRUE if the packet is found, else returns FALSE.
+ *
+ * @param window - The window of RUDP packets
+ * @param seq - The sequence number of the packet to remove
+ * @return Whether or not the packet was removed
+ ******************************************************************************/
+bool remove_rudp_packet(rudp_packet_t * window[], u_int8_t seq){
+    int i;
+    for(i = 0; i < WINDOW_SIZE; i++){
+        if(window[i] == NULL)
+            continue;
+        if(window[i]->seq_num == seq){
+            free(window[i]);
+            window[i] = NULL;
+            return TRUE;
+        }
+    }
+    return FALSE;
 }

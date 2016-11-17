@@ -2,8 +2,6 @@
  *
  ******************************************************************************/
 
-#include <unistd.h>
-#include <stdio.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -67,44 +65,21 @@ int main(int argc, char **argv){
         close(sockfd);
         exit(1);
     }
-
     fprintf(stdout, "Successfully opened %s\n", filename);
 
     /*Read in file from disk*/
     send_file(sockfd, (struct sockaddr *)&clientaddr, file);
-//    int count = 0;
-//    while(!feof(file) && !ferror(file)){
-//        bytes_read = fread(read_buf, 1, RUDP_DATA, file);
-//        if(ferror(file)){
-//            fprintf(stderr, "File read error\n");
-//            break;
-//        }
-//        if(bytes_read > 0){
-//            rudp_pkt = create_rudp_packet(read_buf, (size_t)bytes_read);
-//            if(feof(file)) {
-//                rudp_pkt->seq_num = END_SEQ;
-//                rudp_pkt->checksum = 0;
-//                rudp_pkt->checksum = calc_checksum(rudp_pkt);
-//            }
-//            sendto(sockfd, rudp_pkt, (size_t)(RUDP_HEAD + bytes_read), 0,
-//                   (struct sockaddr*)&clientaddr, sizeof(struct sockaddr_in));
-//            free(rudp_pkt);
-//
-//            /*Send data to client*/
-//
-//            /*Print the number of bytes read in to stdout*/
-//            fprintf(stdout, "Read %d bytes\n", (int)bytes_read);
-//            count += bytes_read;
-//        }
-//    }
-//    printf("%d total bytes read\n", count);
-//
-//    /*Clean up*/
-//    fclose(file);
+
     close(sockfd);
     return 0;
 }
 
+/**
+ *
+ * @param sockfd
+ * @param clientaddr
+ * @param file
+ */
 void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
     int count = 0;
     ssize_t bytes_read;
