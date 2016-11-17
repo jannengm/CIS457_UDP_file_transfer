@@ -74,12 +74,12 @@ int main(int argc, char **argv){
     return 0;
 }
 
-/**
+/*******************************************************************************
  *
  * @param sockfd
  * @param clientaddr
  * @param file
- */
+ ******************************************************************************/
 void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
     int count = 0;
     ssize_t bytes_read;
@@ -101,7 +101,7 @@ void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
 
             /*If file reached EOF, flag as the last packet*/
             if(feof(file)) {
-                rudp_pkt->seq_num = END_SEQ;
+                rudp_pkt->type = END_SEQ;
                 rudp_pkt->checksum = 0;
                 rudp_pkt->checksum = calc_checksum(rudp_pkt);
             }

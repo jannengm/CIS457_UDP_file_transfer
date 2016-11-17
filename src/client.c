@@ -58,12 +58,14 @@ int main(int argc, char **argv){
     count = 0;
     len = sizeof(struct sockaddr_in);
     do{
+        /*Receive packet from server*/
         memset(read_buf, 0, MAX_LINE);
         bytes_read = recvfrom(sockfd, read_buf, MAX_LINE,
                               0, (struct sockaddr*)&serveraddr,
                               (socklen_t *) &len);
         rudp_pkt = (rudp_packet_t *)read_buf;
 
+        /*Print packet contents to stdout*/
         fprintf(stdout, "Got %d byte packet\n", (int)bytes_read);
         fprintf(stdout, "\tSequence number: %d\n", rudp_pkt->seq_num);
         fprintf(stdout, "\tChecksum: 0x%04x ", rudp_pkt->checksum);
@@ -71,10 +73,13 @@ int main(int argc, char **argv){
                                   "correct" : "incorrect"));
         count += bytes_read - RUDP_HEAD;
 
-        //TODO:Write data to file
+        //TODO: Send Acknowledgement
+
+
+        /*Write file to disk*/
         fwrite(rudp_pkt->data, 1, bytes_read - RUDP_HEAD, file);
 
-    }while(rudp_pkt->seq_num != END_SEQ);
+    }while(rudp_pkt->type != END_SEQ);
     fprintf(stdout, "%d total bytes received\n", count);
 
     /*Clean up*/
