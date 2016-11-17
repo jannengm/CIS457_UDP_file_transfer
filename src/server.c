@@ -9,6 +9,8 @@
 #include <arpa/inet.h>
 #include "rudp_packet.h"
 
+void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file);
+
 /*******************************************************************************
  * Server main method. Expects a port number as a command line argument
  *
@@ -23,6 +25,7 @@ int main(int argc, char **argv){
     char filename[MAX_LINE];
     unsigned char read_buf[RUDP_DATA];
     FILE *file;
+    rudp_packet_t *rudp_pkt;
 
     /*Check command line arguments*/
     if(argc != 2){
@@ -68,19 +71,74 @@ int main(int argc, char **argv){
     fprintf(stdout, "Successfully opened %s\n", filename);
 
     /*Read in file from disk*/
+    send_file(sockfd, (struct sockaddr *)&clientaddr, file);
+//    int count = 0;
+//    while(!feof(file) && !ferror(file)){
+//        bytes_read = fread(read_buf, 1, RUDP_DATA, file);
+//        if(ferror(file)){
+//            fprintf(stderr, "File read error\n");
+//            break;
+//        }
+//        if(bytes_read > 0){
+//            rudp_pkt = create_rudp_packet(read_buf, (size_t)bytes_read);
+//            if(feof(file)) {
+//                rudp_pkt->seq_num = END_SEQ;
+//                rudp_pkt->checksum = 0;
+//                rudp_pkt->checksum = calc_checksum(rudp_pkt);
+//            }
+//            sendto(sockfd, rudp_pkt, (size_t)(RUDP_HEAD + bytes_read), 0,
+//                   (struct sockaddr*)&clientaddr, sizeof(struct sockaddr_in));
+//            free(rudp_pkt);
+//
+//            /*Send data to client*/
+//
+//            /*Print the number of bytes read in to stdout*/
+//            fprintf(stdout, "Read %d bytes\n", (int)bytes_read);
+//            count += bytes_read;
+//        }
+//    }
+//    printf("%d total bytes read\n", count);
+//
+//    /*Clean up*/
+//    fclose(file);
+    close(sockfd);
+    return 0;
+}
+
+void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
     int count = 0;
+    ssize_t bytes_read;
+    unsigned char read_buf[MAX_LINE];
+    rudp_packet_t *rudp_pkt;
+
     while(!feof(file) && !ferror(file)){
+        /*Read up to RUDP_DATA bytes from file*/
         bytes_read = fread(read_buf, 1, RUDP_DATA, file);
         if(ferror(file)){
             fprintf(stderr, "File read error\n");
             break;
         }
+
+        /*If bytes successfully read in, send RUDP packet*/
         if(bytes_read > 0){
-            //TODO: create RUDP packet and send to client
+            /*Create a new RUDP packet*/
+            rudp_pkt = create_rudp_packet(read_buf, (size_t)bytes_read);
+
+            /*If file reached EOF, flag as the last packet*/
+            if(feof(file)) {
+                rudp_pkt->seq_num = END_SEQ;
+                rudp_pkt->checksum = 0;
+                rudp_pkt->checksum = calc_checksum(rudp_pkt);
+            }
+
+            /*Send the RUDP packet*/
+            sendto(sockfd, rudp_pkt, (size_t)(RUDP_HEAD + bytes_read), 0,
+                   clientaddr, sizeof(struct sockaddr_in));
+
+            /*Free RUDP packet*/
+            free(rudp_pkt);
 
             /*Send data to client*/
-            sendto(sockfd, read_buf, (size_t) bytes_read, 0,
-                   (struct sockaddr*)&clientaddr, sizeof(struct sockaddr_in));
 
             /*Print the number of bytes read in to stdout*/
             fprintf(stdout, "Read %d bytes\n", (int)bytes_read);
@@ -91,6 +149,4 @@ int main(int argc, char **argv){
 
     /*Clean up*/
     fclose(file);
-    close(sockfd);
-    return 0;
 }

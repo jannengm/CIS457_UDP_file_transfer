@@ -5,7 +5,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/rudp_packet.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/rudp_packet.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/server.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/client.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />

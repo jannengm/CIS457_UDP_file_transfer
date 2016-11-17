@@ -24,6 +24,8 @@ rudp_packet_t * create_rudp_packet(void * data, size_t size){
     /*Initialize the packet with passed parameter*/
     pkt->seq_num = seq++;
     memcpy(pkt->data, data, size);
+    if(seq >= MAX_SEQ)
+        seq = 0;
 
     /*Calculate RUDP checksum*/
     checksum = calc_checksum(pkt);
@@ -48,7 +50,7 @@ u_int16_t calc_checksum(rudp_packet_t * rudp_pk){
     u_int16_t checksum;
 
     /*Loop through the data 2 bytes at a time and add it up*/
-    for(i = 0; i < sizeof(rudp_packet_t); i++){
+    for(i = 0; i < sizeof(rudp_packet_t) / 2; i++){
         sum += data[i];
     }
 
@@ -65,4 +67,8 @@ u_int16_t calc_checksum(rudp_packet_t * rudp_pk){
     checksum = ~checksum;
 
     return checksum;
+}
+
+void free_rudp_packet(rudp_packet_t * rudp_pk){
+
 }
