@@ -51,3 +51,54 @@ void fill_window(window_t * window, FILE * fd){
         }
     }
 }
+
+/*******************************************************************************
+ *
+ * @param window
+ * @param rudp_ack
+ * @return
+ ******************************************************************************/
+bool process_ack(window_t * window, rudp_packet_t * rudp_ack){
+    int i, j;
+
+    /*Loop through all packets in the window*/
+    for(i = 0; i < WINDOW_SIZE; i++){
+        /*If the packet is found in the window, remove it*/
+        if(window->packets[i]->seq_num == rudp_ack->seq_num){
+            window->acknowledged[i] = TRUE;
+            free(window->packets[i]);
+            window->packets[i] = NULL;
+
+            /*If this packet is at the head of the window, advance head*/
+            if(i == window->head){
+                for(j = window->head; j < WINDOW_SIZE; j++){
+                    if(window->packets[i] == NULL)
+                        window->head++;
+                    else
+                        break;
+                }
+            }
+
+            /*Packet found*/
+            return TRUE;
+        }
+    }
+
+    /*Made it through the window without finding the packet*/
+    return FALSE;
+}
+
+void advance_window(window_t * window){
+    int i;
+
+    for(i = 0; i + window->head < WINDOW_SIZE; i++){
+        window->packets[i] = window->packets[window->head + i];
+        window->acknowledged[i] = window->acknowledged[window->head + i];
+
+        window->packets[window->head + i] = NULL;
+        window->acknowledged[window->head + i] = FALSE;
+    }
+
+    window->tail -= window->head;
+    window->head = 0;
+}

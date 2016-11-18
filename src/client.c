@@ -57,7 +57,9 @@ int main(int argc, char **argv){
     /*Read file from server*/
     count = 0;
     len = sizeof(struct sockaddr_in);
+    u_int8_t last_packet= 0xFF;
     do{
+        sleep(5);
         /*Receive packet from server*/
         memset(read_buf, 0, MAX_LINE);
         bytes_read = recvfrom(sockfd, read_buf, MAX_LINE,
@@ -74,10 +76,16 @@ int main(int argc, char **argv){
         count += bytes_read - RUDP_HEAD;
 
         //TODO: Send Acknowledgement
+        if(rudp_pkt->seq_num == (u_int8_t)(last_packet + 1) ){
+            fprintf(stdout, "Sending ACK for packet #%d\n", rudp_pkt->seq_num);
 
+            /*Write file to disk*/
+            fwrite(rudp_pkt->data, 1, bytes_read - RUDP_HEAD, file);
 
-        /*Write file to disk*/
-        fwrite(rudp_pkt->data, 1, bytes_read - RUDP_HEAD, file);
+            /*Send acknowledgement*/
+            send_rudp_ack(sockfd, (struct sockaddr*)&serveraddr, rudp_pkt->seq_num);
+            last_packet++;
+        }
 
     }while(rudp_pkt->type != END_SEQ);
     fprintf(stdout, "%d total bytes received\n", count);

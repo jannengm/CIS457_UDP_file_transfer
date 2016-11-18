@@ -13,8 +13,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#define RUDP_HEAD 24        /*Size of RUDP header*/
-#define RUDP_DATA 980       /*Size of RUDP data segment*/
+#define RUDP_HEAD 32        /*Size of RUDP header*/
+#define RUDP_DATA 972       /*Size of RUDP data segment*/
 #define MAX_LINE 1024       /*Maximum input buffer size*/
 #define WINDOW_SIZE 5       /*Size of sliding window*/
 

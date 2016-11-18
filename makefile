@@ -3,7 +3,7 @@
 make: server client clean
 
 server: rudp_packet.o window.o
-	gcc -Wall rudp_packet.o window.o src/server.c -o bin/server
+	gcc -Wall rudp_packet.o window.o src/server.c -o bin/server -pthread
 
 client: rudp_packet.o window.o
 	gcc -Wall rudp_packet.o window.o src/client.c -o bin/client

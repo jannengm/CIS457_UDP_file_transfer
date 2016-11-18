@@ -24,5 +24,6 @@ typedef enum bool bool;
 
 void init_window(window_t * window);
 void fill_window(window_t * window, FILE * fd);
+bool process_ack(window_t * window, rudp_packet_t * rudp_ack);
 
 #endif //PROJECT_4_WINDOW_H

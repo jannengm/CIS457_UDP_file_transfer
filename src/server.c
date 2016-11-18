@@ -6,8 +6,18 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include "rudp_packet.h"
+#include "window.h"
+#include <pthread.h>
+
+struct thread_arg_t{
+    window_t * window;
+    int sockfd;
+};
+
+typedef struct thread_arg_t thread_arg_t;
 
 void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file);
+void * get_acks(void * arg);
 
 /*******************************************************************************
  * Server main method. Expects a port number as a command line argument
@@ -21,9 +31,9 @@ int main(int argc, char **argv){
     ssize_t bytes_read;
     struct sockaddr_in serveraddr, clientaddr;
     char filename[MAX_LINE];
-    unsigned char read_buf[RUDP_DATA];
+//    unsigned char read_buf[RUDP_DATA];
     FILE *file;
-    rudp_packet_t *rudp_pkt;
+//    rudp_packet_t *rudp_pkt;
 
     /*Check command line arguments*/
     if(argc != 2){
@@ -71,7 +81,9 @@ int main(int argc, char **argv){
     send_file(sockfd, (struct sockaddr *)&clientaddr, file);
 
     close(sockfd);
-    return 0;
+//    return 0;
+    sleep(10);
+    exit(0);
 }
 
 /*******************************************************************************
@@ -85,6 +97,17 @@ void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
     ssize_t bytes_read;
     unsigned char read_buf[MAX_LINE];
     rudp_packet_t *rudp_pkt;
+    pthread_t child;
+    thread_arg_t arg;
+
+
+    /*Detach thread to listen for ACKs*/
+    arg.sockfd = sockfd;
+    if( pthread_create(&child, NULL, get_acks, &arg) != 0) {
+        printf("Failed to create thread\n");
+        exit(1);
+    }
+    pthread_detach(child);
 
     while(!feof(file) && !ferror(file)){
         /*Read up to RUDP_DATA bytes from file*/
@@ -124,4 +147,28 @@ void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
 
     /*Clean up*/
     fclose(file);
+}
+
+/*******************************************************************************
+ *
+ * @param arg
+ * @return
+ ******************************************************************************/
+void * get_acks(void * arg){
+    unsigned char buffer[MAX_LINE];
+    struct sockaddr_in clientaddr;
+    int buf_len, len;
+    int sockfd = ((thread_arg_t *)arg)->sockfd;
+//    window_t * window = ((thread_arg_t *)arg)->window;
+
+    buf_len = (int) recvfrom(sockfd, buffer, MAX_LINE, 0,
+                             (struct sockaddr*)&clientaddr,
+                             (socklen_t *)&len);
+
+    if( ((rudp_packet_t *)buffer)->type == ACK ){
+        fprintf(stdout, "Received %d byte acknowledgement for packet %d\n",
+                buf_len, ((rudp_packet_t *)buffer)->seq_num);
+    }
+
+    return NULL;
 }
