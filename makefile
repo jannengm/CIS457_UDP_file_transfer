@@ -2,14 +2,17 @@
 
 make: server client clean
 
-server: rudp_packet.o
-	gcc -Wall rudp_packet.o src/server.c -o bin/server
+server: rudp_packet.o window.o
+	gcc -Wall rudp_packet.o window.o src/server.c -o bin/server
 
-client: rudp_packet.o
-	gcc -Wall rudp_packet.o src/client.c -o bin/client
+client: rudp_packet.o window.o
+	gcc -Wall rudp_packet.o window.o src/client.c -o bin/client
 
 rudp_packet.o:
 	gcc -Wall -c src/rudp_packet.c src/rudp_packet.h
+
+window.o:
+	gcc -Wall -c src/window.c src/window.h src/rudp_packet.h
 
 clean:
 	rm *.o

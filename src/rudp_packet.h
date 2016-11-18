@@ -31,28 +31,17 @@ struct rudp_packet_t{
     unsigned char data[RUDP_DATA];  /*Binary data*/
 };
 
-struct window_t{
-    struct rudp_packet_t *packets[WINDOW_SIZE];
-    int head;
-    int tail;
-};
-
-enum bool{
-    FALSE, TRUE
-};
-
 typedef struct rudp_packet_t rudp_packet_t;
-typedef struct window_t window_t;
-typedef enum bool bool;
 //typedef struct sockaddr sockaddr;
 
 rudp_packet_t * create_rudp_packet(void * data, size_t size);
 u_int16_t calc_checksum(rudp_packet_t * rudp_pk);
+void send_rudp_ack(int sockfd, struct sockaddr *serveraddr, u_int8_t seq_num);
 //bool is_full(rudp_packet_t * window[]);
 //bool is_empty(rudp_packet_t * window[]);
 //void fill_window(rudp_packet_t * window[], FILE *file);
 //bool remove_rudp_packet(rudp_packet_t * window[], u_int8_t seq);
 //void send_ack(int sockfd, struct sockaddr *serveraddr, u_int8_t seq_num);
-void init_window(window_t * window);
+
 
 #endif //PROJECT_4_UDP_PACKET_H

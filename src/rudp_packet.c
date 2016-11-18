@@ -68,6 +68,23 @@ u_int16_t calc_checksum(rudp_packet_t * rudp_pk){
     return checksum;
 }
 
+/*******************************************************************************
+ * Sends an acknowledgment for the packet designated by seq_num to the server.
+ *
+ * @param sockfd - The socket to send over
+ * @param serveraddr - The address of the server
+ * @param seq_num - The sequence number of the packet being acknowledged
+ ******************************************************************************/
+void send_rudp_ack(int sockfd, struct sockaddr *serveraddr, u_int8_t seq_num){
+    rudp_packet_t ack;
+    ack.type = ACK;
+    ack.checksum = 0;
+    ack.seq_num = seq_num;
+    ack.checksum = calc_checksum(&ack);
+
+    sendto(sockfd, &ack, RUDP_HEAD, 0, serveraddr, sizeof(struct sockaddr_in));
+}
+
 ///*******************************************************************************
 // * Returns a boolean value designating whether or not the window is full
 // *
@@ -157,28 +174,3 @@ u_int16_t calc_checksum(rudp_packet_t * rudp_pk){
 //    return FALSE;
 //}
 //
-///*******************************************************************************
-// * Sends an acknowledgment for the packet designated by seq_num to the server.
-// *
-// * @param sockfd - The socket to send over
-// * @param serveraddr - The address of the server
-// * @param seq_num - The sequence number of the packet being acknowledged
-// ******************************************************************************/
-//void send_ack(int sockfd, struct sockaddr *serveraddr, u_int8_t seq_num){
-//    rudp_packet_t ack;
-//    ack.type = ACK;
-//    ack.checksum = 0;
-//    ack.seq_num = seq_num;
-//    ack.checksum = calc_checksum(&ack);
-//
-//    sendto(sockfd, &ack, RUDP_HEAD, 0, serveraddr, sizeof(struct sockaddr_in));
-//}
-
-void init_window(window_t * window){
-    int i;
-    for(i = 0; i < WINDOW_SIZE; i++){
-        window->packets[i] = NULL;
-    }
-    window->head = -1;
-    window->tail = -1;
-}
