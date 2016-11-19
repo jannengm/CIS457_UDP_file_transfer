@@ -8,9 +8,10 @@ void init_window(window_t * window){
     int i;
     for(i = 0; i < WINDOW_SIZE; i++){
         window->packets[i] = NULL;
-        window->acknowledged[i] = FALSE;
+//        window->acknowledged[i] = FALSE;
+        window->size[i] = 0;
     }
-    window->head = -1;
+    window->head = 0;
     window->tail = 0;
 }
 
@@ -41,13 +42,14 @@ void fill_window(window_t * window, FILE * fd){
 
             /*Add packet to window*/
             window->packets[window->tail] = rudp_pkt;
-            window->acknowledged[window->tail] = FALSE;
+            window->size[window->tail] = buf_len + RUDP_HEAD;
+//            window->acknowledged[window->tail] = FALSE;
             window->tail++;
 
-            /*Update head if window was empty*/
-            if(window->head < 0){
-                window->head++;
-            }
+//            /*Update head if window was empty*/
+//            if(window->head < 0){
+//                window->head++;
+//            }
         }
     }
 }
@@ -63,16 +65,19 @@ bool process_ack(window_t * window, rudp_packet_t * rudp_ack){
 
     /*Loop through all packets in the window*/
     for(i = 0; i < WINDOW_SIZE; i++){
+        if(window->packets[i] == NULL)
+            continue;
+
         /*If the packet is found in the window, remove it*/
         if(window->packets[i]->seq_num == rudp_ack->seq_num){
-            window->acknowledged[i] = TRUE;
+//            window->acknowledged[i] = TRUE;
             free(window->packets[i]);
             window->packets[i] = NULL;
 
             /*If this packet is at the head of the window, advance head*/
             if(i == window->head){
                 for(j = window->head; j < WINDOW_SIZE; j++){
-                    if(window->packets[i] == NULL)
+                    if(window->packets[j] == NULL)
                         window->head++;
                     else
                         break;
@@ -91,14 +96,64 @@ bool process_ack(window_t * window, rudp_packet_t * rudp_ack){
 void advance_window(window_t * window){
     int i;
 
-    for(i = 0; i + window->head < WINDOW_SIZE; i++){
+    for(i = 0; i + window->head < WINDOW_SIZE && window->head != 0; i++){
         window->packets[i] = window->packets[window->head + i];
-        window->acknowledged[i] = window->acknowledged[window->head + i];
+        window->size[i] = window->size[window->head + i];
 
         window->packets[window->head + i] = NULL;
-        window->acknowledged[window->head + i] = FALSE;
+        window->size[window->head + i] = 0;
     }
 
     window->tail -= window->head;
     window->head = 0;
+}
+
+void send_window(window_t * window, int sockfd, struct sockaddr* clientaddr){
+    static int bytes_sent;
+    int i;
+    print_window(window);
+    for(i = 0; i < WINDOW_SIZE; i++){
+        if(window->packets[i] != NULL){
+            fprintf(stdout, "Sending %d byte packet\n", window->size[i]);
+            fprintf(stdout, "\t|-TYPE:     0x%02x", window->packets[i]->type);
+            switch(window->packets[i]->type){
+                case DATA_PKT: fprintf(stdout, " (DATA_PKT)\n"); break;
+                case END_SEQ: fprintf(stdout, " (END_SEQ)\n"); break;
+                case ACK: fprintf(stdout, " (ACK)\n"); break;
+                default: fprintf(stdout, " (UNKNOWN)\n"); break;
+            }
+            fprintf(stdout, "\t|-SEQ NUM:  %d\n", window->packets[i]->seq_num);
+            fprintf(stdout, "\t|-CHECKSUM: 0x%04x\n", window->packets[i]->checksum);
+            sendto(sockfd, window->packets[i], (size_t) window->size[i], 0,
+                   clientaddr, sizeof(struct sockaddr));
+            bytes_sent += window->size[i] - RUDP_HEAD;
+        }
+    }
+    fprintf(stdout, "%d total bytes sent\n", bytes_sent);
+}
+
+bool is_empty(window_t * window){
+    int i;
+    for(i = 0; i < WINDOW_SIZE; i++){
+        if(window->packets[i] != NULL)
+            return FALSE;
+    }
+    return TRUE;
+}
+
+void print_window(window_t * window){
+    int i;
+    fprintf(stdout, "\n|");
+    for(i = 0; i < WINDOW_SIZE; i++){
+        if(window->packets[i] != NULL){
+            fprintf(stdout, " %3d ", window->packets[i]->seq_num);
+        }
+        else{
+            fprintf(stdout, "     ");
+        }
+    }
+    fprintf(stdout, "|\n");
+    fprintf(stdout, "---------------------------\n");
+    fprintf(stdout, "  HEAD: %d\t", window->head);
+    fprintf(stdout, "TAIL: %d\n", window->tail);
 }

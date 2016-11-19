@@ -6,6 +6,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include "rudp_packet.h"
+#include <time.h>
 
 int main(int argc, char **argv){
     int sockfd, count, len;
@@ -58,8 +59,10 @@ int main(int argc, char **argv){
     count = 0;
     len = sizeof(struct sockaddr_in);
     u_int8_t last_packet= 0xFF;
+    u_int16_t checksum;
+    srand(time(NULL));
     do{
-        sleep(5);
+//        sleep(5);
         /*Receive packet from server*/
         memset(read_buf, 0, MAX_LINE);
         bytes_read = recvfrom(sockfd, read_buf, MAX_LINE,
@@ -67,27 +70,38 @@ int main(int argc, char **argv){
                               (socklen_t *) &len);
         rudp_pkt = (rudp_packet_t *)read_buf;
 
-        /*Print packet contents to stdout*/
-        fprintf(stdout, "Got %d byte packet\n", (int)bytes_read);
-        fprintf(stdout, "\tSequence number: %d\n", rudp_pkt->seq_num);
-        fprintf(stdout, "\tChecksum: 0x%04x ", rudp_pkt->checksum);
-        fprintf(stdout, "(%s)\n", ((calc_checksum(rudp_pkt) == 0) ?
-                                  "correct" : "incorrect"));
-        count += bytes_read - RUDP_HEAD;
+        checksum = calc_checksum(rudp_pkt);
 
-        //TODO: Send Acknowledgement
-        if(rudp_pkt->seq_num == (u_int8_t)(last_packet + 1) ){
-            fprintf(stdout, "Sending ACK for packet #%d\n", rudp_pkt->seq_num);
-
-            /*Write file to disk*/
-            fwrite(rudp_pkt->data, 1, bytes_read - RUDP_HEAD, file);
-
-            /*Send acknowledgement*/
-            send_rudp_ack(sockfd, (struct sockaddr*)&serveraddr, rudp_pkt->seq_num);
-            last_packet++;
+        /*Random packet error*/
+        if(rand() % 10 == 0){
+            checksum++;
         }
 
-    }while(rudp_pkt->type != END_SEQ);
+        /*Print packet contents to stdout*/
+        fprintf(stdout, "Got %d byte packet\n", (int)bytes_read);
+        fprintf(stdout, "\t|-Sequence number: %d\n", rudp_pkt->seq_num);
+        fprintf(stdout, "\t|-Checksum: 0x%04x ", rudp_pkt->checksum);
+        fprintf(stdout, "(%s)\n", (checksum == 0) ? "correct" : "incorrect");
+        count += bytes_read - RUDP_HEAD;
+
+        if( rudp_pkt->seq_num == (u_int8_t)(last_packet + 1) && checksum == 0){
+            /*Random packet drop*/
+            if(rand() % 10 == 0){
+                fprintf(stdout, "\t|-Packet dropped \n");
+            }
+            else {
+                fprintf(stdout, "\t|-Sending ACK for packet #%d\n", rudp_pkt->seq_num);
+
+                /*Write file to disk*/
+                fwrite(rudp_pkt->data, 1, bytes_read - RUDP_HEAD, file);
+
+                /*Send acknowledgement*/
+                send_rudp_ack(sockfd, (struct sockaddr *) &serveraddr, rudp_pkt->seq_num);
+                last_packet++;
+            }
+        }
+
+    }while( !(rudp_pkt->type == END_SEQ && rudp_pkt->seq_num == last_packet) );
     fprintf(stdout, "%d total bytes received\n", count);
 
     /*Clean up*/

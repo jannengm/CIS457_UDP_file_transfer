@@ -19,6 +19,10 @@ typedef struct thread_arg_t thread_arg_t;
 void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file);
 void * get_acks(void * arg);
 
+pthread_mutex_t window_lock;
+pthread_mutex_t flag_lock;
+bool file_finished;
+
 /*******************************************************************************
  * Server main method. Expects a port number as a command line argument
  *
@@ -82,9 +86,72 @@ int main(int argc, char **argv){
 
     close(sockfd);
 //    return 0;
-    sleep(10);
+//    sleep(10);
     exit(0);
 }
+
+///*******************************************************************************
+// *
+// * @param sockfd
+// * @param clientaddr
+// * @param file
+// ******************************************************************************/
+//void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
+//    int count = 0;
+//    ssize_t bytes_read;
+//    unsigned char read_buf[MAX_LINE];
+//    rudp_packet_t *rudp_pkt;
+//    pthread_t child;
+//    thread_arg_t arg;
+//
+//
+//    /*Detach thread to listen for ACKs*/
+//    arg.sockfd = sockfd;
+//    if( pthread_create(&child, NULL, get_acks, &arg) != 0) {
+//        printf("Failed to create thread\n");
+//        exit(1);
+//    }
+//    pthread_detach(child);
+//
+//    while(!feof(file) && !ferror(file)){
+//        /*Read up to RUDP_DATA bytes from file*/
+//        bytes_read = fread(read_buf, 1, RUDP_DATA, file);
+//        if(ferror(file)){
+//            fprintf(stderr, "File read error\n");
+//            break;
+//        }
+//
+//        /*If bytes successfully read in, send RUDP packet*/
+//        if(bytes_read > 0){
+//            /*Create a new RUDP packet*/
+//            rudp_pkt = create_rudp_packet(read_buf, (size_t)bytes_read);
+//
+//            /*If file reached EOF, flag as the last packet*/
+//            if(feof(file)) {
+//                rudp_pkt->type = END_SEQ;
+//                rudp_pkt->checksum = 0;
+//                rudp_pkt->checksum = calc_checksum(rudp_pkt);
+//            }
+//
+//            /*Send the RUDP packet*/
+//            sendto(sockfd, rudp_pkt, (size_t)(RUDP_HEAD + bytes_read), 0,
+//                   clientaddr, sizeof(struct sockaddr_in));
+//
+//            /*Free RUDP packet*/
+//            free(rudp_pkt);
+//
+//            /*Send data to client*/
+//
+//            /*Print the number of bytes read in to stdout*/
+//            fprintf(stdout, "Read %d bytes\n", (int)bytes_read);
+//            count += bytes_read;
+//        }
+//    }
+//    printf("%d total bytes read\n", count);
+//
+//    /*Clean up*/
+//    fclose(file);
+//}
 
 /*******************************************************************************
  *
@@ -93,57 +160,58 @@ int main(int argc, char **argv){
  * @param file
  ******************************************************************************/
 void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
-    int count = 0;
-    ssize_t bytes_read;
-    unsigned char read_buf[MAX_LINE];
-    rudp_packet_t *rudp_pkt;
+//    int count = 0;
+//    ssize_t bytes_read;
+//    unsigned char read_buf[MAX_LINE];
+//    rudp_packet_t *rudp_pkt;
     pthread_t child;
     thread_arg_t arg;
+    window_t window;
 
+    /*Initialize the sliding window*/
+    init_window(&window);
+
+    /*Set flag to indicate file not yet sent*/
+    file_finished = FALSE;
 
     /*Detach thread to listen for ACKs*/
     arg.sockfd = sockfd;
+    arg.window = &window;
     if( pthread_create(&child, NULL, get_acks, &arg) != 0) {
         printf("Failed to create thread\n");
         exit(1);
     }
     pthread_detach(child);
 
-    while(!feof(file) && !ferror(file)){
-        /*Read up to RUDP_DATA bytes from file*/
-        bytes_read = fread(read_buf, 1, RUDP_DATA, file);
-        if(ferror(file)){
-            fprintf(stderr, "File read error\n");
+//    do{
+//        advance_window(&window);
+//        fill_window(&window, file);
+//        send_window(&window, sockfd, clientaddr);
+//    }while( !feof(file) && !is_empty(&window) );
+
+    while(TRUE){
+        pthread_mutex_lock(&window_lock);
+
+        /*Check exit conditions*/
+        if(feof(file) && is_empty(&window)) {
+            pthread_mutex_unlock(&window_lock);
             break;
         }
 
-        /*If bytes successfully read in, send RUDP packet*/
-        if(bytes_read > 0){
-            /*Create a new RUDP packet*/
-            rudp_pkt = create_rudp_packet(read_buf, (size_t)bytes_read);
+        /*Update window and send*/
+        advance_window(&window);
+        fill_window(&window, file);
+        send_window(&window, sockfd, clientaddr);
 
-            /*If file reached EOF, flag as the last packet*/
-            if(feof(file)) {
-                rudp_pkt->type = END_SEQ;
-                rudp_pkt->checksum = 0;
-                rudp_pkt->checksum = calc_checksum(rudp_pkt);
-            }
+        pthread_mutex_unlock(&window_lock);
 
-            /*Send the RUDP packet*/
-            sendto(sockfd, rudp_pkt, (size_t)(RUDP_HEAD + bytes_read), 0,
-                   clientaddr, sizeof(struct sockaddr_in));
-
-            /*Free RUDP packet*/
-            free(rudp_pkt);
-
-            /*Send data to client*/
-
-            /*Print the number of bytes read in to stdout*/
-            fprintf(stdout, "Read %d bytes\n", (int)bytes_read);
-            count += bytes_read;
-        }
+        /*Wait for acknowledgements*/
+        sleep(1);
     }
-    printf("%d total bytes read\n", count);
+
+    pthread_mutex_lock(&flag_lock);
+    file_finished = TRUE;
+    pthread_mutex_unlock(&flag_lock);
 
     /*Clean up*/
     fclose(file);
@@ -159,15 +227,41 @@ void * get_acks(void * arg){
     struct sockaddr_in clientaddr;
     int buf_len, len;
     int sockfd = ((thread_arg_t *)arg)->sockfd;
-//    window_t * window = ((thread_arg_t *)arg)->window;
+    window_t * window = ((thread_arg_t *)arg)->window;
 
-    buf_len = (int) recvfrom(sockfd, buffer, MAX_LINE, 0,
-                             (struct sockaddr*)&clientaddr,
-                             (socklen_t *)&len);
+    while(TRUE) {
 
-    if( ((rudp_packet_t *)buffer)->type == ACK ){
-        fprintf(stdout, "Received %d byte acknowledgement for packet %d\n",
-                buf_len, ((rudp_packet_t *)buffer)->seq_num);
+        /*If parent thread has finished sending the file, exit*/
+        pthread_mutex_lock(&flag_lock);
+        if(file_finished){
+            pthread_mutex_unlock(&flag_lock);
+            break;
+        }
+        else {
+            pthread_mutex_unlock(&flag_lock);
+        }
+
+        /*If the window is empty, do not block to wait for ACKs*/
+        pthread_mutex_lock(&window_lock);
+        if( is_empty(window) ){
+            pthread_mutex_unlock(&window_lock);
+            continue;
+        }
+        pthread_mutex_unlock(&window_lock);
+
+        /*Block and wait for ACKs*/
+        buf_len = (int) recvfrom(sockfd, buffer, MAX_LINE, 0,
+                                 (struct sockaddr *) &clientaddr,
+                                 (socklen_t *) &len);
+
+        /*If ACK received, try to remove it from the window*/
+        if (((rudp_packet_t *) buffer)->type == ACK) {
+            fprintf(stdout, "Received %d byte acknowledgement for packet %d\n",
+                    buf_len, ((rudp_packet_t *) buffer)->seq_num);
+            pthread_mutex_lock(&window_lock);
+            process_ack(window, (rudp_packet_t *) buffer);
+            pthread_mutex_unlock(&window_lock);
+        }
     }
 
     return NULL;
