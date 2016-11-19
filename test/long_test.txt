@@ -1,0 +1,2321 @@
+Received 17 characters
+Requested file: test/test_img.jpg
+Successfully opened test/test_img.jpg
+
+|   0    1    2    3    4 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  0
+	|-CHECKSUM: 0x2776
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  2
+	|-CHECKSUM: 0xbe3f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  3
+	|-CHECKSUM: 0x5fab
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  4
+	|-CHECKSUM: 0xd63b
+4860 total bytes sent
+Received 32 byte acknowledgement for packet 0
+Received 32 byte acknowledgement for packet 2
+Received 32 byte acknowledgement for packet 3
+Received 32 byte acknowledgement for packet 4
+
+|   1                   5 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+6804 total bytes sent
+Received 32 byte acknowledgement for packet 1
+
+|   5    6    7    8    9 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  6
+	|-CHECKSUM: 0xf8cd
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  7
+	|-CHECKSUM: 0xc457
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  8
+	|-CHECKSUM: 0xb743
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  9
+	|-CHECKSUM: 0xb7f8
+11664 total bytes sent
+Received 32 byte acknowledgement for packet 5
+Received 32 byte acknowledgement for packet 6
+Received 32 byte acknowledgement for packet 7
+Received 32 byte acknowledgement for packet 8
+Received 32 byte acknowledgement for packet 9
+
+|  10   11   12   13   14 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  10
+	|-CHECKSUM: 0xf249
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  12
+	|-CHECKSUM: 0x3994
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  13
+	|-CHECKSUM: 0x47c6
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  14
+	|-CHECKSUM: 0x194c
+16524 total bytes sent
+Received 32 byte acknowledgement for packet 10
+Received 32 byte acknowledgement for packet 12
+Received 32 byte acknowledgement for packet 13
+Received 32 byte acknowledgement for packet 14
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+18468 total bytes sent
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+20412 total bytes sent
+Received 32 byte acknowledgement for packet 11
+
+|  15   16   17   18   19 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  16
+	|-CHECKSUM: 0x7485
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  17
+	|-CHECKSUM: 0x4108
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  18
+	|-CHECKSUM: 0x0870
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  19
+	|-CHECKSUM: 0xfdf5
+25272 total bytes sent
+Received 32 byte acknowledgement for packet 15
+Received 32 byte acknowledgement for packet 16
+Received 32 byte acknowledgement for packet 17
+Received 32 byte acknowledgement for packet 18
+Received 32 byte acknowledgement for packet 19
+
+|  20   21   22   23   24 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  20
+	|-CHECKSUM: 0x012f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  21
+	|-CHECKSUM: 0xfbe4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  22
+	|-CHECKSUM: 0xbe2b
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  23
+	|-CHECKSUM: 0xbe2a
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+30132 total bytes sent
+Received 32 byte acknowledgement for packet 20
+Received 32 byte acknowledgement for packet 21
+Received 32 byte acknowledgement for packet 22
+Received 32 byte acknowledgement for packet 23
+
+|  24   25   26           |
+---------------------------
+  HEAD: 0	TAIL: 3
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  25
+	|-CHECKSUM: 0xbe28
+Sending 305 byte packet
+	|-TYPE:     0x01 (END_SEQ)
+	|-SEQ NUM:  26
+	|-CHECKSUM: 0xd42b
+32349 total bytes sent
+Received 32 byte acknowledgement for packet 24
+Received 32 byte acknowledgement for packet 25
+Received 32 byte acknowledgement for packet 26
+Received 17 characters
+Requested file: test/test_img.jpg
+Successfully opened test/test_img.jpg
+
+|   0    1    2    3    4 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  0
+	|-CHECKSUM: 0x2776
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  2
+	|-CHECKSUM: 0xbe3f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  3
+	|-CHECKSUM: 0x5fab
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  4
+	|-CHECKSUM: 0xd63b
+4860 total bytes sent
+Received 32 byte acknowledgement for packet 0
+Received 32 byte acknowledgement for packet 2
+Received 32 byte acknowledgement for packet 3
+Received 32 byte acknowledgement for packet 4
+
+|   1                   5 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+6804 total bytes sent
+Received 32 byte acknowledgement for packet 1
+
+|   5    6    7    8    9 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  6
+	|-CHECKSUM: 0xf8cd
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  7
+	|-CHECKSUM: 0xc457
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  8
+	|-CHECKSUM: 0xb743
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  9
+	|-CHECKSUM: 0xb7f8
+11664 total bytes sent
+Received 32 byte acknowledgement for packet 5
+Received 32 byte acknowledgement for packet 6
+Received 32 byte acknowledgement for packet 7
+Received 32 byte acknowledgement for packet 8
+Received 32 byte acknowledgement for packet 9
+
+|  10   11   12   13   14 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  10
+	|-CHECKSUM: 0xf249
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  12
+	|-CHECKSUM: 0x3994
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  13
+	|-CHECKSUM: 0x47c6
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  14
+	|-CHECKSUM: 0x194c
+16524 total bytes sent
+Received 32 byte acknowledgement for packet 10
+Received 32 byte acknowledgement for packet 12
+Received 32 byte acknowledgement for packet 13
+Received 32 byte acknowledgement for packet 14
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+18468 total bytes sent
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+20412 total bytes sent
+Received 32 byte acknowledgement for packet 11
+
+|  15   16   17   18   19 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  16
+	|-CHECKSUM: 0x7485
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  17
+	|-CHECKSUM: 0x4108
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  18
+	|-CHECKSUM: 0x0870
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  19
+	|-CHECKSUM: 0xfdf5
+25272 total bytes sent
+Received 32 byte acknowledgement for packet 15
+Received 32 byte acknowledgement for packet 16
+Received 32 byte acknowledgement for packet 17
+Received 32 byte acknowledgement for packet 18
+Received 32 byte acknowledgement for packet 19
+
+|  20   21   22   23   24 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  20
+	|-CHECKSUM: 0x012f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  21
+	|-CHECKSUM: 0xfbe4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  22
+	|-CHECKSUM: 0xbe2b
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  23
+	|-CHECKSUM: 0xbe2a
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+30132 total bytes sent
+Received 32 byte acknowledgement for packet 20
+Received 32 byte acknowledgement for packet 21
+Received 32 byte acknowledgement for packet 22
+Received 32 byte acknowledgement for packet 23
+
+|  24   25   26           |
+---------------------------
+  HEAD: 0	TAIL: 3
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  25
+	|-CHECKSUM: 0xbe28
+Sending 305 byte packet
+	|-TYPE:     0x01 (END_SEQ)
+	|-SEQ NUM:  26
+	|-CHECKSUM: 0xd42b
+32349 total bytes sent
+Received 32 byte acknowledgement for packet 24
+Received 32 byte acknowledgement for packet 25
+Received 32 byte acknowledgement for packet 26
+Received 17 characters
+Requested file: test/test_img.jpg
+Successfully opened test/test_img.jpg
+
+|   0    1    2    3    4 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  0
+	|-CHECKSUM: 0x2776
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  2
+	|-CHECKSUM: 0xbe3f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  3
+	|-CHECKSUM: 0x5fab
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  4
+	|-CHECKSUM: 0xd63b
+4860 total bytes sent
+Received 32 byte acknowledgement for packet 0
+Received 32 byte acknowledgement for packet 2
+Received 32 byte acknowledgement for packet 3
+Received 32 byte acknowledgement for packet 4
+
+|   1                   5 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+6804 total bytes sent
+Received 32 byte acknowledgement for packet 1
+
+|   5    6    7    8    9 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  6
+	|-CHECKSUM: 0xf8cd
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  7
+	|-CHECKSUM: 0xc457
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  8
+	|-CHECKSUM: 0xb743
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  9
+	|-CHECKSUM: 0xb7f8
+11664 total bytes sent
+Received 32 byte acknowledgement for packet 5
+Received 32 byte acknowledgement for packet 6
+Received 32 byte acknowledgement for packet 7
+Received 32 byte acknowledgement for packet 8
+Received 32 byte acknowledgement for packet 9
+
+|  10   11   12   13   14 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  10
+	|-CHECKSUM: 0xf249
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  12
+	|-CHECKSUM: 0x3994
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  13
+	|-CHECKSUM: 0x47c6
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  14
+	|-CHECKSUM: 0x194c
+16524 total bytes sent
+Received 32 byte acknowledgement for packet 10
+Received 32 byte acknowledgement for packet 12
+Received 32 byte acknowledgement for packet 13
+Received 32 byte acknowledgement for packet 14
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+18468 total bytes sent
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+20412 total bytes sent
+Received 32 byte acknowledgement for packet 11
+
+|  15   16   17   18   19 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  16
+	|-CHECKSUM: 0x7485
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  17
+	|-CHECKSUM: 0x4108
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  18
+	|-CHECKSUM: 0x0870
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  19
+	|-CHECKSUM: 0xfdf5
+25272 total bytes sent
+Received 32 byte acknowledgement for packet 15
+Received 32 byte acknowledgement for packet 16
+Received 32 byte acknowledgement for packet 17
+Received 32 byte acknowledgement for packet 18
+Received 32 byte acknowledgement for packet 19
+
+|  20   21   22   23   24 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  20
+	|-CHECKSUM: 0x012f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  21
+	|-CHECKSUM: 0xfbe4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  22
+	|-CHECKSUM: 0xbe2b
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  23
+	|-CHECKSUM: 0xbe2a
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+30132 total bytes sent
+Received 32 byte acknowledgement for packet 20
+Received 32 byte acknowledgement for packet 21
+Received 32 byte acknowledgement for packet 22
+Received 32 byte acknowledgement for packet 23
+
+|  24   25   26           |
+---------------------------
+  HEAD: 0	TAIL: 3
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  25
+	|-CHECKSUM: 0xbe28
+Sending 305 byte packet
+	|-TYPE:     0x01 (END_SEQ)
+	|-SEQ NUM:  26
+	|-CHECKSUM: 0xd42b
+32349 total bytes sent
+Received 32 byte acknowledgement for packet 24
+Received 32 byte acknowledgement for packet 25
+Received 32 byte acknowledgement for packet 26
+Received 17 characters
+Requested file: test/test_img.jpg
+Successfully opened test/test_img.jpg
+
+|   0    1    2    3    4 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  0
+	|-CHECKSUM: 0x2776
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  2
+	|-CHECKSUM: 0xbe3f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  3
+	|-CHECKSUM: 0x5fab
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  4
+	|-CHECKSUM: 0xd63b
+4860 total bytes sent
+Received 32 byte acknowledgement for packet 0
+Received 32 byte acknowledgement for packet 2
+Received 32 byte acknowledgement for packet 3
+Received 32 byte acknowledgement for packet 4
+
+|   1                   5 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+6804 total bytes sent
+Received 32 byte acknowledgement for packet 1
+
+|   5    6    7    8    9 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  6
+	|-CHECKSUM: 0xf8cd
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  7
+	|-CHECKSUM: 0xc457
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  8
+	|-CHECKSUM: 0xb743
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  9
+	|-CHECKSUM: 0xb7f8
+11664 total bytes sent
+Received 32 byte acknowledgement for packet 5
+Received 32 byte acknowledgement for packet 6
+Received 32 byte acknowledgement for packet 7
+Received 32 byte acknowledgement for packet 8
+Received 32 byte acknowledgement for packet 9
+
+|  10   11   12   13   14 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  10
+	|-CHECKSUM: 0xf249
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  12
+	|-CHECKSUM: 0x3994
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  13
+	|-CHECKSUM: 0x47c6
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  14
+	|-CHECKSUM: 0x194c
+16524 total bytes sent
+Received 32 byte acknowledgement for packet 10
+Received 32 byte acknowledgement for packet 12
+Received 32 byte acknowledgement for packet 13
+Received 32 byte acknowledgement for packet 14
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+18468 total bytes sent
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+20412 total bytes sent
+Received 32 byte acknowledgement for packet 11
+
+|  15   16   17   18   19 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  16
+	|-CHECKSUM: 0x7485
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  17
+	|-CHECKSUM: 0x4108
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  18
+	|-CHECKSUM: 0x0870
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  19
+	|-CHECKSUM: 0xfdf5
+25272 total bytes sent
+Received 32 byte acknowledgement for packet 15
+Received 32 byte acknowledgement for packet 16
+Received 32 byte acknowledgement for packet 17
+Received 32 byte acknowledgement for packet 18
+Received 32 byte acknowledgement for packet 19
+
+|  20   21   22   23   24 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  20
+	|-CHECKSUM: 0x012f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  21
+	|-CHECKSUM: 0xfbe4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  22
+	|-CHECKSUM: 0xbe2b
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  23
+	|-CHECKSUM: 0xbe2a
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+30132 total bytes sent
+Received 32 byte acknowledgement for packet 20
+Received 32 byte acknowledgement for packet 21
+Received 32 byte acknowledgement for packet 22
+Received 32 byte acknowledgement for packet 23
+
+|  24   25   26           |
+---------------------------
+  HEAD: 0	TAIL: 3
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  25
+	|-CHECKSUM: 0xbe28
+Sending 305 byte packet
+	|-TYPE:     0x01 (END_SEQ)
+	|-SEQ NUM:  26
+	|-CHECKSUM: 0xd42b
+32349 total bytes sent
+Received 32 byte acknowledgement for packet 24
+Received 32 byte acknowledgement for packet 25
+Received 32 byte acknowledgement for packet 26
+Received 17 characters
+Requested file: test/test_img.jpg
+Successfully opened test/test_img.jpg
+
+|   0    1    2    3    4 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  0
+	|-CHECKSUM: 0x2776
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  2
+	|-CHECKSUM: 0xbe3f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  3
+	|-CHECKSUM: 0x5fab
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  4
+	|-CHECKSUM: 0xd63b
+4860 total bytes sent
+Received 32 byte acknowledgement for packet 0
+Received 32 byte acknowledgement for packet 2
+Received 32 byte acknowledgement for packet 3
+Received 32 byte acknowledgement for packet 4
+
+|   1                   5 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+6804 total bytes sent
+Received 32 byte acknowledgement for packet 1
+
+|   5    6    7    8    9 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  6
+	|-CHECKSUM: 0xf8cd
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  7
+	|-CHECKSUM: 0xc457
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  8
+	|-CHECKSUM: 0xb743
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  9
+	|-CHECKSUM: 0xb7f8
+11664 total bytes sent
+Received 32 byte acknowledgement for packet 5
+Received 32 byte acknowledgement for packet 6
+Received 32 byte acknowledgement for packet 7
+Received 32 byte acknowledgement for packet 8
+Received 32 byte acknowledgement for packet 9
+
+|  10   11   12   13   14 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  10
+	|-CHECKSUM: 0xf249
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  12
+	|-CHECKSUM: 0x3994
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  13
+	|-CHECKSUM: 0x47c6
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  14
+	|-CHECKSUM: 0x194c
+16524 total bytes sent
+Received 32 byte acknowledgement for packet 10
+Received 32 byte acknowledgement for packet 12
+Received 32 byte acknowledgement for packet 13
+Received 32 byte acknowledgement for packet 14
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+18468 total bytes sent
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+20412 total bytes sent
+Received 32 byte acknowledgement for packet 11
+
+|  15   16   17   18   19 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  16
+	|-CHECKSUM: 0x7485
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  17
+	|-CHECKSUM: 0x4108
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  18
+	|-CHECKSUM: 0x0870
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  19
+	|-CHECKSUM: 0xfdf5
+25272 total bytes sent
+Received 32 byte acknowledgement for packet 15
+Received 32 byte acknowledgement for packet 16
+Received 32 byte acknowledgement for packet 17
+Received 32 byte acknowledgement for packet 18
+Received 32 byte acknowledgement for packet 19
+
+|  20   21   22   23   24 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  20
+	|-CHECKSUM: 0x012f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  21
+	|-CHECKSUM: 0xfbe4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  22
+	|-CHECKSUM: 0xbe2b
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  23
+	|-CHECKSUM: 0xbe2a
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+30132 total bytes sent
+Received 32 byte acknowledgement for packet 20
+Received 32 byte acknowledgement for packet 21
+Received 32 byte acknowledgement for packet 22
+Received 32 byte acknowledgement for packet 23
+
+|  24   25   26           |
+---------------------------
+  HEAD: 0	TAIL: 3
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  25
+	|-CHECKSUM: 0xbe28
+Sending 305 byte packet
+	|-TYPE:     0x01 (END_SEQ)
+	|-SEQ NUM:  26
+	|-CHECKSUM: 0xd42b
+32349 total bytes sent
+Received 32 byte acknowledgement for packet 24
+Received 32 byte acknowledgement for packet 25
+Received 32 byte acknowledgement for packet 26
+Received 17 characters
+Requested file: test/test_img.jpg
+Successfully opened test/test_img.jpg
+
+|   0    1    2    3    4 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  0
+	|-CHECKSUM: 0x2776
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  2
+	|-CHECKSUM: 0xbe3f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  3
+	|-CHECKSUM: 0x5fab
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  4
+	|-CHECKSUM: 0xd63b
+4860 total bytes sent
+Received 32 byte acknowledgement for packet 0
+Received 32 byte acknowledgement for packet 2
+Received 32 byte acknowledgement for packet 3
+Received 32 byte acknowledgement for packet 4
+
+|   1                   5 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+6804 total bytes sent
+Received 32 byte acknowledgement for packet 1
+
+|   5    6    7    8    9 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  6
+	|-CHECKSUM: 0xf8cd
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  7
+	|-CHECKSUM: 0xc457
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  8
+	|-CHECKSUM: 0xb743
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  9
+	|-CHECKSUM: 0xb7f8
+11664 total bytes sent
+Received 32 byte acknowledgement for packet 5
+Received 32 byte acknowledgement for packet 6
+Received 32 byte acknowledgement for packet 7
+Received 32 byte acknowledgement for packet 8
+Received 32 byte acknowledgement for packet 9
+
+|  10   11   12   13   14 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  10
+	|-CHECKSUM: 0xf249
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  12
+	|-CHECKSUM: 0x3994
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  13
+	|-CHECKSUM: 0x47c6
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  14
+	|-CHECKSUM: 0x194c
+16524 total bytes sent
+Received 32 byte acknowledgement for packet 10
+Received 32 byte acknowledgement for packet 12
+Received 32 byte acknowledgement for packet 13
+Received 32 byte acknowledgement for packet 14
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+18468 total bytes sent
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+20412 total bytes sent
+Received 32 byte acknowledgement for packet 11
+
+|  15   16   17   18   19 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  16
+	|-CHECKSUM: 0x7485
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  17
+	|-CHECKSUM: 0x4108
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  18
+	|-CHECKSUM: 0x0870
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  19
+	|-CHECKSUM: 0xfdf5
+25272 total bytes sent
+Received 32 byte acknowledgement for packet 15
+Received 32 byte acknowledgement for packet 16
+Received 32 byte acknowledgement for packet 17
+Received 32 byte acknowledgement for packet 18
+Received 32 byte acknowledgement for packet 19
+
+|  20   21   22   23   24 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  20
+	|-CHECKSUM: 0x012f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  21
+	|-CHECKSUM: 0xfbe4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  22
+	|-CHECKSUM: 0xbe2b
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  23
+	|-CHECKSUM: 0xbe2a
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+30132 total bytes sent
+Received 32 byte acknowledgement for packet 20
+Received 32 byte acknowledgement for packet 21
+Received 32 byte acknowledgement for packet 22
+Received 32 byte acknowledgement for packet 23
+
+|  24   25   26           |
+---------------------------
+  HEAD: 0	TAIL: 3
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  25
+	|-CHECKSUM: 0xbe28
+Sending 305 byte packet
+	|-TYPE:     0x01 (END_SEQ)
+	|-SEQ NUM:  26
+	|-CHECKSUM: 0xd42b
+32349 total bytes sent
+Received 32 byte acknowledgement for packet 24
+Received 32 byte acknowledgement for packet 25
+Received 32 byte acknowledgement for packet 26
+Received 17 characters
+Requested file: test/test_img.jpg
+Successfully opened test/test_img.jpg
+
+|   0    1    2    3    4 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  0
+	|-CHECKSUM: 0x2776
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  2
+	|-CHECKSUM: 0xbe3f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  3
+	|-CHECKSUM: 0x5fab
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  4
+	|-CHECKSUM: 0xd63b
+4860 total bytes sent
+Received 32 byte acknowledgement for packet 0
+Received 32 byte acknowledgement for packet 2
+Received 32 byte acknowledgement for packet 3
+Received 32 byte acknowledgement for packet 4
+
+|   1                   5 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+6804 total bytes sent
+Received 32 byte acknowledgement for packet 1
+
+|   5    6    7    8    9 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  6
+	|-CHECKSUM: 0xf8cd
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  7
+	|-CHECKSUM: 0xc457
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  8
+	|-CHECKSUM: 0xb743
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  9
+	|-CHECKSUM: 0xb7f8
+11664 total bytes sent
+Received 32 byte acknowledgement for packet 5
+Received 32 byte acknowledgement for packet 6
+Received 32 byte acknowledgement for packet 7
+Received 32 byte acknowledgement for packet 8
+Received 32 byte acknowledgement for packet 9
+
+|  10   11   12   13   14 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  10
+	|-CHECKSUM: 0xf249
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  12
+	|-CHECKSUM: 0x3994
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  13
+	|-CHECKSUM: 0x47c6
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  14
+	|-CHECKSUM: 0x194c
+16524 total bytes sent
+Received 32 byte acknowledgement for packet 10
+Received 32 byte acknowledgement for packet 12
+Received 32 byte acknowledgement for packet 13
+Received 32 byte acknowledgement for packet 14
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+18468 total bytes sent
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+20412 total bytes sent
+Received 32 byte acknowledgement for packet 11
+
+|  15   16   17   18   19 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  16
+	|-CHECKSUM: 0x7485
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  17
+	|-CHECKSUM: 0x4108
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  18
+	|-CHECKSUM: 0x0870
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  19
+	|-CHECKSUM: 0xfdf5
+25272 total bytes sent
+Received 32 byte acknowledgement for packet 15
+Received 32 byte acknowledgement for packet 16
+Received 32 byte acknowledgement for packet 17
+Received 32 byte acknowledgement for packet 18
+Received 32 byte acknowledgement for packet 19
+
+|  20   21   22   23   24 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  20
+	|-CHECKSUM: 0x012f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  21
+	|-CHECKSUM: 0xfbe4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  22
+	|-CHECKSUM: 0xbe2b
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  23
+	|-CHECKSUM: 0xbe2a
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+30132 total bytes sent
+Received 32 byte acknowledgement for packet 20
+Received 32 byte acknowledgement for packet 21
+Received 32 byte acknowledgement for packet 22
+Received 32 byte acknowledgement for packet 23
+
+|  24   25   26           |
+---------------------------
+  HEAD: 0	TAIL: 3
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  25
+	|-CHECKSUM: 0xbe28
+Sending 305 byte packet
+	|-TYPE:     0x01 (END_SEQ)
+	|-SEQ NUM:  26
+	|-CHECKSUM: 0xd42b
+32349 total bytes sent
+Received 32 byte acknowledgement for packet 24
+Received 32 byte acknowledgement for packet 25
+Received 32 byte acknowledgement for packet 26
+Received 17 characters
+Requested file: test/test_img.jpg
+Successfully opened test/test_img.jpg
+
+|   0    1    2    3    4 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  0
+	|-CHECKSUM: 0x2776
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  2
+	|-CHECKSUM: 0xbe3f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  3
+	|-CHECKSUM: 0x5fab
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  4
+	|-CHECKSUM: 0xd63b
+4860 total bytes sent
+Received 32 byte acknowledgement for packet 0
+Received 32 byte acknowledgement for packet 2
+Received 32 byte acknowledgement for packet 3
+Received 32 byte acknowledgement for packet 4
+
+|   1                   5 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+6804 total bytes sent
+Received 32 byte acknowledgement for packet 1
+
+|   5    6    7    8    9 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  6
+	|-CHECKSUM: 0xf8cd
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  7
+	|-CHECKSUM: 0xc457
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  8
+	|-CHECKSUM: 0xb743
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  9
+	|-CHECKSUM: 0xb7f8
+11664 total bytes sent
+Received 32 byte acknowledgement for packet 5
+Received 32 byte acknowledgement for packet 6
+Received 32 byte acknowledgement for packet 7
+Received 32 byte acknowledgement for packet 8
+Received 32 byte acknowledgement for packet 9
+
+|  10   11   12   13   14 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  10
+	|-CHECKSUM: 0xf249
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  12
+	|-CHECKSUM: 0x3994
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  13
+	|-CHECKSUM: 0x47c6
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  14
+	|-CHECKSUM: 0x194c
+16524 total bytes sent
+Received 32 byte acknowledgement for packet 10
+Received 32 byte acknowledgement for packet 12
+Received 32 byte acknowledgement for packet 13
+Received 32 byte acknowledgement for packet 14
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+18468 total bytes sent
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+20412 total bytes sent
+Received 32 byte acknowledgement for packet 11
+
+|  15   16   17   18   19 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  16
+	|-CHECKSUM: 0x7485
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  17
+	|-CHECKSUM: 0x4108
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  18
+	|-CHECKSUM: 0x0870
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  19
+	|-CHECKSUM: 0xfdf5
+25272 total bytes sent
+Received 32 byte acknowledgement for packet 15
+Received 32 byte acknowledgement for packet 16
+Received 32 byte acknowledgement for packet 17
+Received 32 byte acknowledgement for packet 18
+Received 32 byte acknowledgement for packet 19
+
+|  20   21   22   23   24 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  20
+	|-CHECKSUM: 0x012f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  21
+	|-CHECKSUM: 0xfbe4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  22
+	|-CHECKSUM: 0xbe2b
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  23
+	|-CHECKSUM: 0xbe2a
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+30132 total bytes sent
+Received 32 byte acknowledgement for packet 20
+Received 32 byte acknowledgement for packet 21
+Received 32 byte acknowledgement for packet 22
+Received 32 byte acknowledgement for packet 23
+
+|  24   25   26           |
+---------------------------
+  HEAD: 0	TAIL: 3
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  25
+	|-CHECKSUM: 0xbe28
+Sending 305 byte packet
+	|-TYPE:     0x01 (END_SEQ)
+	|-SEQ NUM:  26
+	|-CHECKSUM: 0xd42b
+32349 total bytes sent
+Received 32 byte acknowledgement for packet 24
+Received 32 byte acknowledgement for packet 25
+Received 32 byte acknowledgement for packet 26
+Received 17 characters
+Requested file: test/test_img.jpg
+Successfully opened test/test_img.jpg
+
+|   0    1    2    3    4 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  0
+	|-CHECKSUM: 0x2776
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  2
+	|-CHECKSUM: 0xbe3f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  3
+	|-CHECKSUM: 0x5fab
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  4
+	|-CHECKSUM: 0xd63b
+4860 total bytes sent
+Received 32 byte acknowledgement for packet 0
+Received 32 byte acknowledgement for packet 2
+Received 32 byte acknowledgement for packet 3
+Received 32 byte acknowledgement for packet 4
+
+|   1                   5 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+6804 total bytes sent
+Received 32 byte acknowledgement for packet 1
+
+|   5    6    7    8    9 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  6
+	|-CHECKSUM: 0xf8cd
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  7
+	|-CHECKSUM: 0xc457
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  8
+	|-CHECKSUM: 0xb743
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  9
+	|-CHECKSUM: 0xb7f8
+11664 total bytes sent
+Received 32 byte acknowledgement for packet 5
+Received 32 byte acknowledgement for packet 6
+Received 32 byte acknowledgement for packet 7
+Received 32 byte acknowledgement for packet 8
+Received 32 byte acknowledgement for packet 9
+
+|  10   11   12   13   14 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  10
+	|-CHECKSUM: 0xf249
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  12
+	|-CHECKSUM: 0x3994
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  13
+	|-CHECKSUM: 0x47c6
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  14
+	|-CHECKSUM: 0x194c
+16524 total bytes sent
+Received 32 byte acknowledgement for packet 10
+Received 32 byte acknowledgement for packet 12
+Received 32 byte acknowledgement for packet 13
+Received 32 byte acknowledgement for packet 14
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+18468 total bytes sent
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+20412 total bytes sent
+Received 32 byte acknowledgement for packet 11
+
+|  15   16   17   18   19 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  16
+	|-CHECKSUM: 0x7485
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  17
+	|-CHECKSUM: 0x4108
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  18
+	|-CHECKSUM: 0x0870
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  19
+	|-CHECKSUM: 0xfdf5
+25272 total bytes sent
+Received 32 byte acknowledgement for packet 15
+Received 32 byte acknowledgement for packet 16
+Received 32 byte acknowledgement for packet 17
+Received 32 byte acknowledgement for packet 18
+Received 32 byte acknowledgement for packet 19
+
+|  20   21   22   23   24 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  20
+	|-CHECKSUM: 0x012f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  21
+	|-CHECKSUM: 0xfbe4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  22
+	|-CHECKSUM: 0xbe2b
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  23
+	|-CHECKSUM: 0xbe2a
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+30132 total bytes sent
+Received 32 byte acknowledgement for packet 20
+Received 32 byte acknowledgement for packet 21
+Received 32 byte acknowledgement for packet 22
+Received 32 byte acknowledgement for packet 23
+
+|  24   25   26           |
+---------------------------
+  HEAD: 0	TAIL: 3
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  25
+	|-CHECKSUM: 0xbe28
+Sending 305 byte packet
+	|-TYPE:     0x01 (END_SEQ)
+	|-SEQ NUM:  26
+	|-CHECKSUM: 0xd42b
+32349 total bytes sent
+Received 32 byte acknowledgement for packet 24
+Received 32 byte acknowledgement for packet 25
+Received 32 byte acknowledgement for packet 26
+Received 17 characters
+Requested file: test/test_img.jpg
+Successfully opened test/test_img.jpg
+
+|   0    1    2    3    4 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  0
+	|-CHECKSUM: 0x2776
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  2
+	|-CHECKSUM: 0xbe3f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  3
+	|-CHECKSUM: 0x5fab
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  4
+	|-CHECKSUM: 0xd63b
+4860 total bytes sent
+Received 32 byte acknowledgement for packet 0
+Received 32 byte acknowledgement for packet 2
+Received 32 byte acknowledgement for packet 3
+Received 32 byte acknowledgement for packet 4
+
+|   1                   5 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+6804 total bytes sent
+Received 32 byte acknowledgement for packet 1
+
+|   5    6    7    8    9 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  6
+	|-CHECKSUM: 0xf8cd
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  7
+	|-CHECKSUM: 0xc457
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  8
+	|-CHECKSUM: 0xb743
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  9
+	|-CHECKSUM: 0xb7f8
+11664 total bytes sent
+Received 32 byte acknowledgement for packet 5
+Received 32 byte acknowledgement for packet 6
+Received 32 byte acknowledgement for packet 7
+Received 32 byte acknowledgement for packet 8
+Received 32 byte acknowledgement for packet 9
+
+|  10   11   12   13   14 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  10
+	|-CHECKSUM: 0xf249
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  12
+	|-CHECKSUM: 0x3994
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  13
+	|-CHECKSUM: 0x47c6
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  14
+	|-CHECKSUM: 0x194c
+16524 total bytes sent
+Received 32 byte acknowledgement for packet 10
+Received 32 byte acknowledgement for packet 12
+Received 32 byte acknowledgement for packet 13
+Received 32 byte acknowledgement for packet 14
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+18468 total bytes sent
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+20412 total bytes sent
+Received 32 byte acknowledgement for packet 11
+
+|  15   16   17   18   19 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  16
+	|-CHECKSUM: 0x7485
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  17
+	|-CHECKSUM: 0x4108
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  18
+	|-CHECKSUM: 0x0870
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  19
+	|-CHECKSUM: 0xfdf5
+25272 total bytes sent
+Received 32 byte acknowledgement for packet 15
+Received 32 byte acknowledgement for packet 16
+Received 32 byte acknowledgement for packet 17
+Received 32 byte acknowledgement for packet 18
+Received 32 byte acknowledgement for packet 19
+
+|  20   21   22   23   24 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  20
+	|-CHECKSUM: 0x012f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  21
+	|-CHECKSUM: 0xfbe4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  22
+	|-CHECKSUM: 0xbe2b
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  23
+	|-CHECKSUM: 0xbe2a
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+30132 total bytes sent
+Received 32 byte acknowledgement for packet 20
+Received 32 byte acknowledgement for packet 21
+Received 32 byte acknowledgement for packet 22
+Received 32 byte acknowledgement for packet 23
+
+|  24   25   26           |
+---------------------------
+  HEAD: 0	TAIL: 3
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  25
+	|-CHECKSUM: 0xbe28
+Sending 305 byte packet
+	|-TYPE:     0x01 (END_SEQ)
+	|-SEQ NUM:  26
+	|-CHECKSUM: 0xd42b
+32349 total bytes sent
+Received 32 byte acknowledgement for packet 24
+Received 32 byte acknowledgement for packet 25
+Received 32 byte acknowledgement for packet 26
+Received 17 characters
+Requested file: test/test_img.jpg
+Successfully opened test/test_img.jpg
+
+|   0    1    2    3    4 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  0
+	|-CHECKSUM: 0x2776
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  2
+	|-CHECKSUM: 0xbe3f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  3
+	|-CHECKSUM: 0x5fab
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  4
+	|-CHECKSUM: 0xd63b
+4860 total bytes sent
+Received 32 byte acknowledgement for packet 0
+Received 32 byte acknowledgement for packet 2
+Received 32 byte acknowledgement for packet 3
+Received 32 byte acknowledgement for packet 4
+
+|   1                   5 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  1
+	|-CHECKSUM: 0xbe40
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+6804 total bytes sent
+Received 32 byte acknowledgement for packet 1
+
+|   5    6    7    8    9 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  5
+	|-CHECKSUM: 0x1aa4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  6
+	|-CHECKSUM: 0xf8cd
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  7
+	|-CHECKSUM: 0xc457
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  8
+	|-CHECKSUM: 0xb743
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  9
+	|-CHECKSUM: 0xb7f8
+11664 total bytes sent
+Received 32 byte acknowledgement for packet 5
+Received 32 byte acknowledgement for packet 6
+Received 32 byte acknowledgement for packet 7
+Received 32 byte acknowledgement for packet 8
+Received 32 byte acknowledgement for packet 9
+
+|  10   11   12   13   14 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  10
+	|-CHECKSUM: 0xf249
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  12
+	|-CHECKSUM: 0x3994
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  13
+	|-CHECKSUM: 0x47c6
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  14
+	|-CHECKSUM: 0x194c
+16524 total bytes sent
+Received 32 byte acknowledgement for packet 10
+Received 32 byte acknowledgement for packet 12
+Received 32 byte acknowledgement for packet 13
+Received 32 byte acknowledgement for packet 14
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+18468 total bytes sent
+
+|  11                  15 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  11
+	|-CHECKSUM: 0x3295
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+20412 total bytes sent
+Received 32 byte acknowledgement for packet 11
+
+|  15   16   17   18   19 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  15
+	|-CHECKSUM: 0x5407
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  16
+	|-CHECKSUM: 0x7485
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  17
+	|-CHECKSUM: 0x4108
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  18
+	|-CHECKSUM: 0x0870
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  19
+	|-CHECKSUM: 0xfdf5
+25272 total bytes sent
+Received 32 byte acknowledgement for packet 15
+Received 32 byte acknowledgement for packet 16
+Received 32 byte acknowledgement for packet 17
+Received 32 byte acknowledgement for packet 18
+Received 32 byte acknowledgement for packet 19
+
+|  20   21   22   23   24 |
+---------------------------
+  HEAD: 0	TAIL: 5
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  20
+	|-CHECKSUM: 0x012f
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  21
+	|-CHECKSUM: 0xfbe4
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  22
+	|-CHECKSUM: 0xbe2b
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  23
+	|-CHECKSUM: 0xbe2a
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+30132 total bytes sent
+Received 32 byte acknowledgement for packet 20
+Received 32 byte acknowledgement for packet 21
+Received 32 byte acknowledgement for packet 22
+Received 32 byte acknowledgement for packet 23
+
+|  24   25   26           |
+---------------------------
+  HEAD: 0	TAIL: 3
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  24
+	|-CHECKSUM: 0xbe29
+Sending 1004 byte packet
+	|-TYPE:     0x00 (DATA_PKT)
+	|-SEQ NUM:  25
+	|-CHECKSUM: 0xbe28
+Sending 305 byte packet
+	|-TYPE:     0x01 (END_SEQ)
+	|-SEQ NUM:  26
+	|-CHECKSUM: 0xd42b
+32349 total bytes sent
+Received 32 byte acknowledgement for packet 24
+Received 32 byte acknowledgement for packet 25
+Received 32 byte acknowledgement for packet 26
