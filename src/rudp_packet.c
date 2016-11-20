@@ -12,8 +12,8 @@
  * @param size - The size of the data parameter
  * @return pkt - A newly allocated pointer to an RUDP packet
  ******************************************************************************/
-rudp_packet_t * create_rudp_packet(void * data, size_t size, u_int8_t * seq_num){
-    static u_int8_t seq;
+rudp_packet_t * create_rudp_packet(void * data, size_t size, u_int32_t * seq_num){
+    static u_int32_t seq;
     u_int16_t checksum;
 
     /*Allocate memory for the new RUDP packet*/
@@ -45,7 +45,7 @@ rudp_packet_t * create_rudp_packet(void * data, size_t size, u_int8_t * seq_num)
  * correct.
  *
  * @param rudp_pk - The packet to calculate the checksum for
- * @return checksum - The internet checksum computer for the entire packet
+ * @return checksum - The internet checksum for the entire packet
  ******************************************************************************/
 u_int16_t calc_checksum(rudp_packet_t * rudp_pk){
     u_int16_t *data = (u_int16_t *)rudp_pk;
@@ -80,7 +80,7 @@ u_int16_t calc_checksum(rudp_packet_t * rudp_pk){
  * @param serveraddr - The address of the server
  * @param seq_num - The sequence number of the packet being acknowledged
  ******************************************************************************/
-void send_rudp_ack(int sockfd, struct sockaddr *serveraddr, u_int8_t seq_num){
+void send_rudp_ack(int sockfd, struct sockaddr *serveraddr, u_int32_t seq_num){
     rudp_packet_t ack;
     memset(&ack, 0, sizeof(rudp_packet_t));
     ack.type = ACK;
@@ -140,7 +140,13 @@ void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_p
 
 
 bool print_rudp_packet(rudp_packet_t * rudp_pkt){
+    u_int16_t orig_checksum = rudp_pkt->checksum;
+    rudp_pkt->checksum = 0;
     int checksum = calc_checksum(rudp_pkt);
+    if(checksum == orig_checksum){
+        checksum = 0;
+    }
+    rudp_pkt->checksum = orig_checksum;
 
     fprintf(stdout, "\t|-TYPE:     0x%02x", rudp_pkt->type);
     switch(rudp_pkt->type){

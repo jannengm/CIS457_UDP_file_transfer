@@ -2,10 +2,10 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/window.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/cache_list.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/window.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/client.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/server.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/window.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/rudp_packet.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/cache_list.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/rudp_packet.c" isTestSource="false" />

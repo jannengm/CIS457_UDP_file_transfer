@@ -111,19 +111,25 @@ void advance_window(window_t * window){
 void send_window(window_t * window, int sockfd, struct sockaddr* clientaddr){
     static int bytes_sent;
     int i;
+    bool good_checksum;
+    u_int16_t checksum;
+
     print_window(window);
     for(i = 0; i < WINDOW_SIZE; i++){
         if(window->packets[i] != NULL){
-            fprintf(stdout, "Sending %d byte packet\n", window->size[i]);
-            fprintf(stdout, "\t|-TYPE:     0x%02x", window->packets[i]->type);
-            switch(window->packets[i]->type){
-                case DATA_PKT: fprintf(stdout, " (DATA_PKT)\n"); break;
-                case END_SEQ: fprintf(stdout, " (END_SEQ)\n"); break;
-                case ACK: fprintf(stdout, " (ACK)\n"); break;
-                default: fprintf(stdout, " (UNKNOWN)\n"); break;
+            fprintf(stdout, "\nSending %d byte packet\n", window->size[i]);
+            if(window->packets[i]->seq_num == 345){
+                perror("345");
             }
-            fprintf(stdout, "\t|-SEQ NUM:  %d\n", window->packets[i]->seq_num);
-            fprintf(stdout, "\t|-CHECKSUM: 0x%04x\n", window->packets[i]->checksum);
+            good_checksum = print_rudp_packet(window->packets[i]);
+            if(!good_checksum){
+                fprintf(stdout, "\t\t|-CHECKSUM CALC RESULT: 0x%04x\n",
+                        calc_checksum(window->packets[i]));
+                fprintf(stdout, "\t|-RECALCULATING CHECKSUM\n");
+                window->packets[i]->checksum = 0;
+                checksum = calc_checksum(window->packets[i]);
+                window->packets[i]->checksum = checksum;
+            }
             sendto(sockfd, window->packets[i], (size_t) window->size[i], 0,
                    clientaddr, sizeof(struct sockaddr));
             bytes_sent += window->size[i] - RUDP_HEAD;
