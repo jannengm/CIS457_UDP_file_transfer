@@ -7,10 +7,6 @@
 
 #include "rudp_packet.h"
 
-enum bool{
-    FALSE, TRUE
-};
-
 struct window_t{
     struct rudp_packet_t *packets[WINDOW_SIZE];
 //    enum bool acknowledged[WINDOW_SIZE];
@@ -21,7 +17,6 @@ struct window_t{
 
 typedef struct rudp_packet_t rudp_packet_t;
 typedef struct window_t window_t;
-typedef enum bool bool;
 
 void init_window(window_t * window);
 void fill_window(window_t * window, FILE * fd);

@@ -34,7 +34,7 @@ int main(int argc, char **argv){
     int sockfd, len;
     ssize_t bytes_read;
     struct sockaddr_in serveraddr, clientaddr;
-    char filename[MAX_LINE];
+    char filename[MAX_LINE], buffer[MAX_LINE];
 //    unsigned char read_buf[RUDP_DATA];
     FILE *file;
 //    rudp_packet_t *rudp_pkt;
@@ -65,12 +65,23 @@ int main(int argc, char **argv){
 
     /*Get file name from client*/
     len = sizeof(struct sockaddr_in);
-    bytes_read = recvfrom(sockfd, filename, MAX_LINE, 0,
-                                (struct sockaddr*)&clientaddr,
-                                (socklen_t *)&len);
-    printf("Received %d characters\n", (int)bytes_read);
-    filename[bytes_read] = '\0';
-    fprintf(stdout, "Requested file: %s\n", filename);
+//    bytes_read = recvfrom(sockfd, filename, MAX_LINE, 0,
+//                                (struct sockaddr*)&clientaddr,
+//                                (socklen_t *)&len);
+//    printf("Received %d characters\n", (int)bytes_read);
+    memset(buffer, 0, MAX_LINE);
+    bytes_read = recvfrom(sockfd, buffer, MAX_LINE, 0,
+                          (struct sockaddr*)&clientaddr,
+                          (socklen_t *)&len);
+    printf("Got %d byte packet\n", (int)bytes_read);
+    print_rudp_packet( (rudp_packet_t*)buffer );
+
+    printf("\t|-SENDING ACKNOWLEDGEMENT\n");
+    send_rudp_ack(sockfd, (struct sockaddr*)&clientaddr, ((rudp_packet_t*)buffer)->seq_num );
+
+    memcpy(filename, ((rudp_packet_t*)buffer)->data, bytes_read - RUDP_HEAD);
+    filename[bytes_read - RUDP_HEAD] = '\0';
+    fprintf(stdout, "\nRequested file: %s\n", filename);
 
     /*Attempt to open the file*/
     file = fopen(filename, "r");
@@ -80,6 +91,8 @@ int main(int argc, char **argv){
         exit(1);
     }
     fprintf(stdout, "Successfully opened %s\n", filename);
+
+//    sleep(30);
 
     /*Read in file from disk*/
     send_file(sockfd, (struct sockaddr *)&clientaddr, file);
@@ -208,6 +221,13 @@ void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
         /*Wait for acknowledgements*/
         sleep(1);
     }
+
+    /*Send END_SEQ packet*/
+    rudp_packet_t end_seq;
+    memset(&end_seq, 0, sizeof(rudp_packet_t));
+    end_seq.type = END_SEQ;
+    end_seq.checksum = calc_checksum(&end_seq);
+    send_and_wait(sockfd, clientaddr, &end_seq, RUDP_HEAD);
 
     pthread_mutex_lock(&flag_lock);
     file_finished = TRUE;

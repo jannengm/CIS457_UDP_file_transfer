@@ -33,12 +33,12 @@ void fill_window(window_t * window, FILE * fd){
         if(buf_len > 0){
 
             /*Create new RUDP packet*/
-            rudp_pkt = create_rudp_packet(buffer, (size_t) buf_len);
-            if(feof(fd)){
-                rudp_pkt->type = END_SEQ;
-                rudp_pkt->checksum = 0;
-                rudp_pkt->checksum = calc_checksum(rudp_pkt);
-            }
+            rudp_pkt = create_rudp_packet(buffer, (size_t) buf_len, NULL);
+//            if(feof(fd)){
+//                rudp_pkt->type = END_SEQ;
+//                rudp_pkt->checksum = 0;
+//                rudp_pkt->checksum = calc_checksum(rudp_pkt);
+//            }
 
             /*Add packet to window*/
             window->packets[window->tail] = rudp_pkt;
