@@ -73,6 +73,20 @@ u_int16_t calc_checksum(rudp_packet_t * rudp_pk){
     return checksum;
 }
 
+bool check_checksum(rudp_packet_t * rudp_pkt){
+    bool is_good = FALSE;
+
+    u_int16_t tmp = rudp_pkt->checksum;
+    rudp_pkt->checksum = 0;
+    int checksum = calc_checksum(rudp_pkt);
+    if(checksum == tmp){
+        is_good = TRUE;
+    }
+    rudp_pkt->checksum = tmp;
+
+    return is_good;
+}
+
 /*******************************************************************************
  * Sends an acknowledgment for the packet designated by seq_num to the server.
  *
@@ -80,28 +94,41 @@ u_int16_t calc_checksum(rudp_packet_t * rudp_pk){
  * @param serveraddr - The address of the server
  * @param seq_num - The sequence number of the packet being acknowledged
  ******************************************************************************/
-void send_rudp_ack(int sockfd, struct sockaddr *serveraddr, u_int32_t seq_num){
+void send_rudp_ack(int sockfd, struct sockaddr *serveraddr, rudp_packet_t * rudp_pkt){
     rudp_packet_t ack;
     memset(&ack, 0, sizeof(rudp_packet_t));
     ack.type = ACK;
     ack.checksum = 0;
-    ack.seq_num = seq_num;
+    ack.seq_num = rudp_pkt->seq_num;
     ack.checksum = calc_checksum(&ack);
 
     sendto(sockfd, &ack, RUDP_HEAD, 0, serveraddr, sizeof(struct sockaddr_in));
 }
 
-void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_pkt, size_t size){
+void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_pkt,
+                   size_t size, rudp_packet_t * ack_pkt, struct timespec * req){
     struct pollfd fd;
-    int err = 0;
+    int err = 0, buf_len, timeout_ms;
     unsigned char buffer[MAX_LINE];
     socklen_t len = sizeof(struct sockaddr_in);
     rudp_packet_t * ack;
-    int buf_len;
     bool good_checksum;
+
+    /*Convert timespec to milliseconds*/
+    if(req != NULL) {
+        timeout_ms = (int) (req->tv_sec * 1000 + req->tv_nsec / 1000000);
+    }
+    else{
+        timeout_ms = 1000;      /*Default 1 second*/
+    }
 
     fd.fd = sockfd;
     fd.events = POLLIN;
+
+    u_int8_t expected = ACK;
+    if(rudp_pkt->type == SYN){
+        expected = SYN_ACK;
+    }
 
     while(1){
         /*Send packet to destination*/
@@ -110,7 +137,7 @@ void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_p
         sendto(sockfd, rudp_pkt, size, 0, destaddr, len);
 
         /*Wait up to 1000 ms for ACK*/
-        err = poll(&fd, 1, 1000);   /*Set timeout to 1000 ms*/
+        err = poll(&fd, 1, timeout_ms);
         if(err == 0){
             fprintf(stdout,"\nTimeout, no ACK received\n");
         }
@@ -122,12 +149,19 @@ void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_p
             memset(buffer, 0, MAX_LINE);
             buf_len = (int)recvfrom(sockfd, buffer, MAX_LINE, 0, destaddr, &len);
             ack = (rudp_packet_t *)buffer;
-            fprintf(stdout, "\nGot %d byte packet\n", buf_len);
-            good_checksum = print_rudp_packet(ack);
+//            fprintf(stdout, "\nGot %d byte packet\n", buf_len);
+//            good_checksum = print_rudp_packet(ack);
+            good_checksum = check_checksum(rudp_pkt);
             if(good_checksum &&
                     ack->seq_num == rudp_pkt->seq_num &&
-                    ack->type == ACK){
+                    ack->type == expected){
                 fprintf(stdout, "\t|-RECEIVED ACKNOWLEDGEMENT\n");
+                fprintf(stdout, "\nGot %d byte packet\n", buf_len);
+                print_rudp_packet( (rudp_packet_t *)buffer );
+                if(ack_pkt != NULL){
+                    memset(ack_pkt, 0, sizeof(rudp_packet_t));
+                    memcpy(ack_pkt, ack, (size_t) buf_len);
+                }
                 break;
             }
             else{
@@ -138,125 +172,28 @@ void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_p
 }
 
 
-
 bool print_rudp_packet(rudp_packet_t * rudp_pkt){
-    u_int16_t orig_checksum = rudp_pkt->checksum;
-    rudp_pkt->checksum = 0;
-    int checksum = calc_checksum(rudp_pkt);
-    if(checksum == orig_checksum){
-        checksum = 0;
-    }
-    rudp_pkt->checksum = orig_checksum;
+//    u_int16_t orig_checksum = rudp_pkt->checksum;
+//    rudp_pkt->checksum = 0;
+//    int checksum = calc_checksum(rudp_pkt);
+//    if(checksum == orig_checksum){
+//        checksum = 0;
+//    }
+//    rudp_pkt->checksum = orig_checksum;
+    bool checksum = check_checksum(rudp_pkt);
 
     fprintf(stdout, "\t|-TYPE:     0x%02x", rudp_pkt->type);
     switch(rudp_pkt->type){
         case DATA_PKT: fprintf(stdout, " (DATA_PKT)\n"); break;
         case END_SEQ: fprintf(stdout, " (END_SEQ)\n"); break;
         case ACK: fprintf(stdout, " (ACK)\n"); break;
+        case SYN: fprintf(stdout, " (SYN)\n"); break;
+        case SYN_ACK: fprintf(stdout, " (SYN_ACK)\n"); break;
         default: fprintf(stdout, " (UNKNOWN)\n"); break;
     }
     fprintf(stdout, "\t|-SEQ NUM:  %d\n", rudp_pkt->seq_num);
     fprintf(stdout, "\t|-CHECKSUM: 0x%04x ", rudp_pkt->checksum);
-    fprintf(stdout, "(%s)\n", (checksum == 0) ? "correct" : "incorrect");
+    fprintf(stdout, "(%s)\n", checksum ? "correct" : "incorrect");
 
-    if( checksum == 0 )
-        return TRUE;
-    else
-        return FALSE;
+    return checksum;
 }
-
-//void send_rudp_message(int sockfd, struct sockaddr *destaddr, const char * msg){
-//    rudp_packet_t * rudp_pkt = create_rudp_packet( (void *)msg, strlen(msg) );
-//
-//    free(rudp_pkt);
-//}
-
-///*******************************************************************************
-// * Returns a boolean value designating whether or not the window is full
-// *
-// * @param window - Pointer to the first element in the window
-// * @return TRUE or FALSE
-// ******************************************************************************/
-//bool is_full(rudp_packet_t * window[]){
-//    return (bool) (window[WINDOW_SIZE - 1] == NULL);
-//}
-//
-///*******************************************************************************
-// * Returns a boolean value designating whether or not the window is empty
-// *
-// * @param window - Pointer to the first element in the window
-// * @return TRUE or FALSE
-// ******************************************************************************/
-//bool is_empty(rudp_packet_t * window[]){
-//    int i;
-//    for(i = 0; i < WINDOW_SIZE; i++){
-//        if(window[i] != NULL){
-//            return FALSE;
-//        }
-//    }
-//    return TRUE;
-//}
-//
-///*******************************************************************************
-// * Reads in up RUDP_DATA bytes from file at a time, creates a new RUDP packet,
-// * and adds it to the first available slot in the window
-// *
-// * @param window
-// * @param file
-// ******************************************************************************/
-//void fill_window(rudp_packet_t * window[], FILE *file){
-//    int i;
-//    unsigned char buffer[MAX_LINE];
-//    ssize_t bytes_read;
-//    rudp_packet_t *rudp_pkt;
-//
-//    for(i = 0; i < WINDOW_SIZE && window[i] == NULL; i++){
-//        memset(buffer, 0, MAX_LINE);
-//        /*Read up to RUDP_DATA bytes from file*/
-//        bytes_read = fread(buffer, 1, RUDP_DATA, file);
-//        if(ferror(file)){
-//            fprintf(stderr, "File read error\n");
-//            break;
-//        }
-//
-//        /*If bytes successfully read in, send RUDP packet*/
-//        if(bytes_read > 0) {
-//            /*Create a new RUDP packet*/
-//            rudp_pkt = create_rudp_packet(buffer, (size_t) bytes_read);
-//
-//            /*If file reached EOF, flag as the last packet*/
-//            if (feof(file)) {
-//                rudp_pkt->seq_num = END_SEQ;
-//                rudp_pkt->checksum = 0;
-//                rudp_pkt->checksum = calc_checksum(rudp_pkt);
-//            }
-//
-//            /*Insert new RUDP packet into window*/
-//            window[i] = rudp_pkt;
-//        }
-//    }
-//}
-//
-///*******************************************************************************
-// * Searches through the window of RUDP packets for the specificied sequence
-// * number. Deallocates memory for the packet, sets the window slot to be NULL,
-// * and returns TRUE if the packet is found, else returns FALSE.
-// *
-// * @param window - The window of RUDP packets
-// * @param seq - The sequence number of the packet to remove
-// * @return Whether or not the packet was removed
-// ******************************************************************************/
-//bool remove_rudp_packet(rudp_packet_t * window[], u_int8_t seq){
-//    int i;
-//    for(i = 0; i < WINDOW_SIZE; i++){
-//        if(window[i] == NULL)
-//            continue;
-//        if(window[i]->seq_num == seq){
-//            free(window[i]);
-//            window[i] = NULL;
-//            return TRUE;
-//        }
-//    }
-//    return FALSE;
-//}
-//

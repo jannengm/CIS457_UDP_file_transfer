@@ -9,6 +9,9 @@
 #include "window.h"
 #include <pthread.h>
 
+#define SEC_TO_NSEC 1000000000          /*Number of nanoseconds in 1 second*/
+#define DEFAULT_TIMEOUT 100000000       /*Default timeout is 0.1 seconds*/
+
 struct thread_arg_t{
     window_t * window;
     int sockfd;
@@ -16,7 +19,9 @@ struct thread_arg_t{
 
 typedef struct thread_arg_t thread_arg_t;
 
-void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file);
+//void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file);
+void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file,
+               struct timespec * req);
 void * get_acks(void * arg);
 
 pthread_mutex_t window_lock;
@@ -35,14 +40,33 @@ int main(int argc, char **argv){
     ssize_t bytes_read;
     struct sockaddr_in serveraddr, clientaddr;
     char filename[MAX_LINE], buffer[MAX_LINE];
-//    unsigned char read_buf[RUDP_DATA];
     FILE *file;
-//    rudp_packet_t *rudp_pkt;
+    rudp_packet_t *rudp_pkt;
+    bool good_checksum, is_open;
+    struct timespec req;
 
     /*Check command line arguments*/
-    if(argc != 2){
-        fprintf(stderr, "Usage: %s [Port]\n", argv[0]);
+    if(argc < 2 || argc > 3){
+        fprintf(stderr, "Usage: %s [Port] [Timeout (optional)]\n", argv[0]);
         exit(1);
+    }
+
+    /*If timeout parameter specified, set timespec accordingly*/
+    if(argc == 3){
+        if( atof(argv[2]) >= 1 ){
+            req.tv_sec = (int)(atof(argv[2]));
+            req.tv_nsec = (int)((atof(argv[2]) - req.tv_sec) * SEC_TO_NSEC);
+        }
+        else{
+            req.tv_sec = 0;
+            req.tv_nsec = (int)(atof(argv[2]) * SEC_TO_NSEC);
+        }
+    }
+
+    /*Otherwise, set default timeout to 0.1 seconds*/
+    else{
+        req.tv_sec = 0;
+        req.tv_nsec = DEFAULT_TIMEOUT;
     }
 
     /*Create UDP socket*/
@@ -63,33 +87,53 @@ int main(int argc, char **argv){
     /*Listen for up to 10 clients*/
     listen(sockfd, 10);
 
-    /*Get file name from client*/
+    /*Wait for SYN*/
     len = sizeof(struct sockaddr_in);
-    memset(buffer, 0, MAX_LINE);
-    bytes_read = recvfrom(sockfd, buffer, MAX_LINE, 0,
-                          (struct sockaddr*)&clientaddr,
-                          (socklen_t *)&len);
-    printf("Got %d byte packet\n", (int)bytes_read);
-    print_rudp_packet( (rudp_packet_t*)buffer );
+    do {
+        memset(buffer, 0, MAX_LINE);
+        bytes_read = recvfrom(sockfd, buffer, MAX_LINE, 0,
+                              (struct sockaddr *) &clientaddr,
+                              (socklen_t *) &len);
+        printf("Got %d byte packet\n", (int)bytes_read);
+        good_checksum = print_rudp_packet( (rudp_packet_t*)buffer );
+    }while( !good_checksum || ((rudp_packet_t *)buffer)->type != SYN);
 
-    printf("\t|-SENDING ACKNOWLEDGEMENT\n");
-    send_rudp_ack(sockfd, (struct sockaddr*)&clientaddr, ((rudp_packet_t*)buffer)->seq_num );
-
-    memcpy(filename, ((rudp_packet_t*)buffer)->data, bytes_read - RUDP_HEAD);
+    /*Attempt to open file*/
+    memcpy(filename, ((rudp_packet_t*)buffer)->data,
+           (size_t)(bytes_read - RUDP_HEAD));
     filename[bytes_read - RUDP_HEAD] = '\0';
     fprintf(stdout, "\nRequested file: %s\n", filename);
 
-    /*Attempt to open the file*/
     file = fopen(filename, "r");
     if(file == NULL){
         fprintf(stderr, "Could not locate %s\n", filename);
-        close(sockfd);
-        exit(1);
+        is_open = FALSE;
     }
-    fprintf(stdout, "Successfully opened %s\n", filename);
+    else {
+        fprintf(stdout, "Successfully opened %s\n", filename);
+        is_open = TRUE;
+    }
+
+    /*Create SYN_ACK packet*/
+    u_int32_t seq_num = 0;
+    rudp_pkt = create_rudp_packet(&is_open, sizeof(bool), &seq_num);
+    rudp_pkt->type = SYN_ACK;
+    rudp_pkt->checksum = 0;
+    rudp_pkt->checksum = calc_checksum(rudp_pkt);
+
+    /*Send SYN_ACK with status of file*/
+    fprintf(stdout, "\nSending %d byte packet\n",
+            (int)(sizeof(bool) + RUDP_HEAD) );
+    print_rudp_packet(rudp_pkt);
+    send_and_wait(sockfd, (struct sockaddr *) &clientaddr, rudp_pkt,
+                  sizeof(bool) + RUDP_HEAD, NULL, &req);
+
+    free(rudp_pkt);
 
     /*Read in file from disk*/
-    send_file(sockfd, (struct sockaddr *)&clientaddr, file);
+    if(is_open){
+        send_file(sockfd, (struct sockaddr *) &clientaddr, file, &req);
+    }
 
     close(sockfd);
 
@@ -102,7 +146,8 @@ int main(int argc, char **argv){
  * @param clientaddr
  * @param file
  ******************************************************************************/
-void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
+void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file,
+               struct timespec * req){
     pthread_t child;
     thread_arg_t arg;
     window_t window;
@@ -139,11 +184,8 @@ void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
         pthread_mutex_unlock(&window_lock);
 
         /*Wait for acknowledgements*/
-//        sleep(1);
-        struct timespec req, rem;
-        req.tv_sec = 0;
-        req.tv_nsec = 100000000;
-        nanosleep(&req, &rem);
+        struct timespec rem;
+        nanosleep(req, &rem);
     }
 
     /*Send END_SEQ packet*/
@@ -151,7 +193,7 @@ void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file){
     memset(&end_seq, 0, sizeof(rudp_packet_t));
     end_seq.type = END_SEQ;
     end_seq.checksum = calc_checksum(&end_seq);
-    send_and_wait(sockfd, clientaddr, &end_seq, RUDP_HEAD);
+    send_and_wait(sockfd, clientaddr, &end_seq, RUDP_HEAD, NULL, req);
 
     pthread_mutex_lock(&flag_lock);
     file_finished = TRUE;

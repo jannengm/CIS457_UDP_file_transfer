@@ -8,11 +8,20 @@ void init_window(window_t * window){
     int i;
     for(i = 0; i < WINDOW_SIZE; i++){
         window->packets[i] = NULL;
-//        window->acknowledged[i] = FALSE;
         window->size[i] = 0;
     }
     window->head = 0;
     window->tail = 0;
+}
+
+bool insert_packet(window_t * window, rudp_packet_t * rudp_pkt, int size){
+    if(window->tail < WINDOW_SIZE){
+        window->packets[window->tail] = rudp_pkt;
+        window->size[window->tail] = size;
+        window->tail++;
+        return TRUE;
+    }
+    return FALSE;
 }
 
 void fill_window(window_t * window, FILE * fd){
@@ -34,22 +43,11 @@ void fill_window(window_t * window, FILE * fd){
 
             /*Create new RUDP packet*/
             rudp_pkt = create_rudp_packet(buffer, (size_t) buf_len, NULL);
-//            if(feof(fd)){
-//                rudp_pkt->type = END_SEQ;
-//                rudp_pkt->checksum = 0;
-//                rudp_pkt->checksum = calc_checksum(rudp_pkt);
-//            }
 
             /*Add packet to window*/
             window->packets[window->tail] = rudp_pkt;
             window->size[window->tail] = buf_len + RUDP_HEAD;
-//            window->acknowledged[window->tail] = FALSE;
             window->tail++;
-
-//            /*Update head if window was empty*/
-//            if(window->head < 0){
-//                window->head++;
-//            }
         }
     }
 }
@@ -70,7 +68,6 @@ bool process_ack(window_t * window, rudp_packet_t * rudp_ack){
 
         /*If the packet is found in the window, remove it*/
         if(window->packets[i]->seq_num == rudp_ack->seq_num){
-//            window->acknowledged[i] = TRUE;
             free(window->packets[i]);
             window->packets[i] = NULL;
 
@@ -118,9 +115,6 @@ void send_window(window_t * window, int sockfd, struct sockaddr* clientaddr){
     for(i = 0; i < WINDOW_SIZE; i++){
         if(window->packets[i] != NULL){
             fprintf(stdout, "\nSending %d byte packet\n", window->size[i]);
-            if(window->packets[i]->seq_num == 345){
-                perror("345");
-            }
             good_checksum = print_rudp_packet(window->packets[i]);
             if(!good_checksum){
                 fprintf(stdout, "\t\t|-CHECKSUM CALC RESULT: 0x%04x\n",
@@ -149,17 +143,17 @@ bool is_empty(window_t * window){
 
 void print_window(window_t * window){
     int i;
-    fprintf(stdout, "\n|");
+    fprintf(stderr, "\n|");
     for(i = 0; i < WINDOW_SIZE; i++){
         if(window->packets[i] != NULL){
-            fprintf(stdout, " %3d ", window->packets[i]->seq_num);
+            fprintf(stderr, " %3d ", window->packets[i]->seq_num);
         }
         else{
-            fprintf(stdout, "     ");
+            fprintf(stderr, "     ");
         }
     }
-    fprintf(stdout, "|\n");
-    fprintf(stdout, "---------------------------\n");
-    fprintf(stdout, "  HEAD: %d\t", window->head);
-    fprintf(stdout, "TAIL: %d\n", window->tail);
+    fprintf(stderr, "|\n");
+    fprintf(stderr, "---------------------------\n");
+//    fprintf(stderr, "  HEAD: %d\t", window->head);
+//    fprintf(stderr, "TAIL: %d\n", window->tail);
 }
