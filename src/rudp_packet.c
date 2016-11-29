@@ -108,7 +108,7 @@ void send_rudp_ack(int sockfd, struct sockaddr *serveraddr, rudp_packet_t * rudp
 void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_pkt,
                    size_t size, rudp_packet_t * ack_pkt, struct timespec * req){
     struct pollfd fd;
-    int err = 0, buf_len, timeout_ms;
+    int err = 0, buf_len, timeout_ms, attempts = 0;
     unsigned char buffer[MAX_LINE];
     socklen_t len = sizeof(struct sockaddr_in);
     rudp_packet_t * ack;
@@ -130,7 +130,7 @@ void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_p
         expected = SYN_ACK;
     }
 
-    while(1){
+    while(attempts < MAX_ATTEMPTS){
         /*Send packet to destination*/
         fprintf(stdout, "\nSending %d byte packet\n", (int) size);
         print_rudp_packet(rudp_pkt);
@@ -165,9 +165,14 @@ void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_p
                 break;
             }
             else{
-                fprintf(stdout, "\t|-RESENDING\n");
+                fprintf(stdout, "\t|-RESENDING (%d)\n", attempts + 1);
             }
         }
+        attempts++;
+    }
+    
+    if(attempts >= MAX_ATTEMPTS){
+        fprintf(stdout, "\t|-MAX ATTEMPTS REACHED, ABORTING\n");
     }
 }
 
