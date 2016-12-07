@@ -1,9 +1,18 @@
-//
-// Created by jannengm on 11/18/16.
-//
+/*******************************************************************************
+ * CIS 457 - Project 4: Reliable File Transfer over UDP
+ * window.c source code
+ * @author Mark Jannenga
+ *
+ * Implements functions delcared in window.h
+ ******************************************************************************/
 
 #include "window.h"
 
+/*******************************************************************************
+ * Initializes an empty window (window)
+ *
+ * @param window - The window to initialize
+ ******************************************************************************/
 void init_window(window_t * window){
     int i;
     for(i = 0; i < WINDOW_SIZE; i++){
@@ -14,6 +23,15 @@ void init_window(window_t * window){
     window->tail = 0;
 }
 
+/*******************************************************************************
+ * Inserts a single packet (rudp_pkt) of a specified size (size) into the window
+ * (window). Returns TRUE if successful, else FALSE.
+ *
+ * @param window - The window to insert the packet into
+ * @param rudp_pkt - The packet to insert
+ * @param size - The size of the packet to insert
+ * @return TRUE or FALSE - Whether or not insertion was successful
+ ******************************************************************************/
 bool insert_packet(window_t * window, rudp_packet_t * rudp_pkt, int size){
     if(window->tail < WINDOW_SIZE){
         window->packets[window->tail] = rudp_pkt;
@@ -24,6 +42,12 @@ bool insert_packet(window_t * window, rudp_packet_t * rudp_pkt, int size){
     return FALSE;
 }
 
+/*******************************************************************************
+ * Fills the sliding window (window) with packets read in from a file (fd)
+ *
+ * @param window - The window to insert packets into
+ * @param fd - The file to read data and create packets from
+ ******************************************************************************/
 void fill_window(window_t * window, FILE * fd){
     unsigned char buffer[MAX_LINE];
     rudp_packet_t *rudp_pkt;
@@ -53,10 +77,13 @@ void fill_window(window_t * window, FILE * fd){
 }
 
 /*******************************************************************************
+ * Processes an RUDP acknowledgement packet (rudp_ack) and removes the
+ * acknowledged packet from the sliding window (window) if it is present.
+ * Returns TRUE if the acknowledged packet was successfully removed, else FALSE.
  *
- * @param window
- * @param rudp_ack
- * @return
+ * @param window - The window too remove packets from
+ * @param rudp_ack - The RUDP acknowledgement to process
+ * @return TRUE or FALSE - whether or not the acknowledged packet was removed
  ******************************************************************************/
 bool process_ack(window_t * window, rudp_packet_t * rudp_ack){
     int i, j;
@@ -90,6 +117,12 @@ bool process_ack(window_t * window, rudp_packet_t * rudp_ack){
     return FALSE;
 }
 
+/*******************************************************************************
+ * Advances the sliding window (window) as far as possible until an
+ * unacknowledged packet is encountered.
+ *
+ * @param window - The sliding to to be advanced
+ ******************************************************************************/
 void advance_window(window_t * window){
     int i;
 
@@ -105,6 +138,15 @@ void advance_window(window_t * window){
     window->head = 0;
 }
 
+/*******************************************************************************
+ * Sends the entire window (window) of packets to a specified destination
+ * (clientaddr) over a specified socket (sockfd). Prints data about each packet
+ * as it is sent.
+ *
+ * @param window - The sliding window to be sent
+ * @param sockfd - The socket to send the packets over
+ * @param clientaddr - The destination to send the packets to
+ ******************************************************************************/
 void send_window(window_t * window, int sockfd, struct sockaddr* clientaddr){
     static int bytes_sent;
     int i;
@@ -132,6 +174,12 @@ void send_window(window_t * window, int sockfd, struct sockaddr* clientaddr){
     fprintf(stdout, "%d total bytes sent\n", bytes_sent);
 }
 
+/*******************************************************************************
+ * Checks if the sliding window is empty or not. Returns TRUE if so, else FALSE.
+ *
+ * @param window - The sliding window to check
+ * @return TRUE or FALSE - Whether or not the window is empty
+ ******************************************************************************/
 bool is_empty(window_t * window){
     int i;
     for(i = 0; i < WINDOW_SIZE; i++){
@@ -141,6 +189,11 @@ bool is_empty(window_t * window){
     return TRUE;
 }
 
+/*******************************************************************************
+ * Prints the window to stderr.
+ *
+ * @param window - The window to print
+ ******************************************************************************/
 void print_window(window_t * window){
     int i;
     fprintf(stderr, "\n|");
@@ -154,6 +207,4 @@ void print_window(window_t * window){
     }
     fprintf(stderr, "|\n");
     fprintf(stderr, "---------------------------\n");
-//    fprintf(stderr, "  HEAD: %d\t", window->head);
-//    fprintf(stderr, "TAIL: %d\n", window->tail);
 }

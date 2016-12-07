@@ -1,5 +1,10 @@
 /*******************************************************************************
+ * CIS 457 - Project 4: Reliable File Transfer over UDP
+ * rudp_packet.h header file
+ * @author Mark Jannenga
  *
+ * Defines constants and custom structs and declares functions used to create,
+ * send, and manage Reliable UDP packets (RUDP packets).
  ******************************************************************************/
 
 #ifndef PROJECT_4_UDP_PACKET_H
@@ -29,7 +34,7 @@
 
 /*Reliable UDP (RUDP) file transfer packet*/
 struct rudp_packet_t{
-    u_int32_t seq_num;               /*RUDP sequence number*/
+    u_int32_t seq_num;              /*RUDP sequence number*/
     u_int8_t type;                  /*RUDP type*/
     u_int16_t checksum;             /*RUDP checksum*/
     unsigned char data[RUDP_DATA];  /*Binary data*/
@@ -64,6 +69,13 @@ rudp_packet_t * create_rudp_packet(void *data, size_t size, u_int32_t *seq_num);
  * @return checksum - The internet checksum for the entire packet
  ******************************************************************************/
 u_int16_t calc_checksum(rudp_packet_t * rudp_pk);
+
+/*******************************************************************************
+ * Checks if the checksum of rudp_pkt is correct. Returns TRUE if so, else FALSE
+ *
+ * @param rudp_pkt - The RUDP packet to check
+ * @return TRUE or FALSE - Whether or not the checksum is correct
+ ******************************************************************************/
 bool check_checksum(rudp_packet_t * rudp_pkt);
 
 /*******************************************************************************
@@ -73,10 +85,35 @@ bool check_checksum(rudp_packet_t * rudp_pkt);
  * @param serveraddr - The address of the server
  * @param seq_num - The sequence number of the packet being acknowledged
  ******************************************************************************/
-void send_rudp_ack(int sockfd, struct sockaddr *serveraddr, rudp_packet_t * rudp_pkt);
-void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_pkt,
-                   size_t size, rudp_packet_t * ack_pkt, struct timespec * req);
-bool print_rudp_packet(rudp_packet_t * rudp_pkt);
+void send_rudp_ack(int sockfd, struct sockaddr *serveraddr,
+                   rudp_packet_t * rudp_pkt);
 
+/*******************************************************************************
+ * Sends an RUDP packet (rudp_pkt) of a given size (size) to the destination
+ * specified (destaddr) over the specified socket (sockfd). Waits a specified
+ * amount of time (req) for an acknowledgement, then resends if no
+ * acknowledgement was received. Attempts to send MAX_ATTEMPTS times, then
+ * aborts if no acknowledgement was received. If an acknowledgement is received,
+ * if is stored in the specified location (ack_pkt).
+ *
+ * @param sockfd - The soocket to send the message one
+ * @param destaddr - The address of the destination to send to
+ * @param rudp_pkt - The packet to send
+ * @param size - The size of the packet to send
+ * @param ack_pkt - The location to store the acknoowledgement
+ * @param req - The amount of time to wait for an acknowledgement
+ ******************************************************************************/
+void send_and_wait(int sockfd, struct sockaddr *destaddr,
+                   rudp_packet_t * rudp_pkt, size_t size,
+                   rudp_packet_t * ack_pkt, struct timespec * req);
+
+/*******************************************************************************
+ * Prints data from the RUDP header to stdout. Checks the checksum and returns
+ * TRUE if it is correct, else FALSE
+ *
+ * @param rudp_pkt - The packet to print
+ * @return TRUE or FALSE - Whether or not the checksum is correct
+ ******************************************************************************/
+bool print_rudp_packet(rudp_packet_t * rudp_pkt);
 
 #endif //PROJECT_4_UDP_PACKET_H

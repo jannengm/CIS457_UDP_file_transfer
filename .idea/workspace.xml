@@ -12,12 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c327320-1290-49e8-8094-93461e1373dd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Project_4.iml" afterPath="$PROJECT_DIR$/.idea/Project_4.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client.c" afterPath="$PROJECT_DIR$/src/client.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/rudp_packet.c" afterPath="$PROJECT_DIR$/src/rudp_packet.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/rudp_packet.h" afterPath="$PROJECT_DIR$/src/rudp_packet.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server.c" afterPath="$PROJECT_DIR$/src/server.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/window.c" afterPath="$PROJECT_DIR$/src/window.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/window.h" afterPath="$PROJECT_DIR$/src/window.h" />
     </list>
     <ignored path="Project_4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,27 +35,38 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="rudp_packet.c" pinned="false" current-in-tab="true">
+            <file leaf-file-name="rudp_packet.c" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/rudp_packet.c">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-486">
-                    <caret line="117" column="33" selection-start-line="117" selection-start-column="33" selection-end-line="117" selection-end-column="33" />
+                  <state relative-caret-position="0">
+                    <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="80" />
                     <folding>
-                      <element signature="e#192#1324#0" expanded="false" />
-                      <element signature="e#1326#2509#0" expanded="false" />
-                      <element signature="e#3123#3887#0" expanded="false" />
-                      <element signature="e#6497#7694#0" expanded="false" />
+                      <element signature="e#352#1484#0" expanded="false" />
+                      <element signature="e#1486#2669#0" expanded="false" />
+                      <element signature="e#2671#3322#0" expanded="false" />
+                      <element signature="e#3324#4107#0" expanded="false" />
+                      <element signature="e#4109#7576#0" expanded="false" />
+                      <element signature="e#7578#8729#0" expanded="false" />
                     </folding>
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="window.c" pinned="false" current-in-tab="false">
+            <file leaf-file-name="window.c" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/window.c">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="748">
-                    <caret line="156" column="6" selection-start-line="156" selection-start-column="6" selection-end-line="157" selection-end-column="50" />
-                    <folding />
+                  <state relative-caret-position="162">
+                    <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+                    <folding>
+                      <element signature="e#337#787#0" expanded="false" />
+                      <element signature="e#789#1577#0" expanded="false" />
+                      <element signature="e#1579#2692#0" expanded="false" />
+                      <element signature="e#2694#4201#0" expanded="false" />
+                      <element signature="e#4203#4933#0" expanded="false" />
+                      <element signature="e#4935#6525#0" expanded="false" />
+                      <element signature="e#6527#7054#0" expanded="false" />
+                      <element signature="e#7056#7675#0" expanded="false" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -69,21 +79,23 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="rudp_packet.h" pinned="false" current-in-tab="true">
+            <file leaf-file-name="rudp_packet.h" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/rudp_packet.h">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="1044">
-                    <caret line="65" column="46" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
-                    <folding />
+                  <state relative-caret-position="0">
+                    <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="80" />
+                    <folding>
+                      <element signature="e#475#494#0" expanded="true" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="window.h" pinned="false" current-in-tab="false">
+            <file leaf-file-name="window.h" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/window.h">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="360">
-                    <caret line="20" column="72" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
+                  <state relative-caret-position="126">
+                    <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
                     <folding />
                   </state>
                 </provider>
@@ -115,8 +127,8 @@
           <file leaf-file-name="server.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/server.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="418">
-                  <caret line="143" column="2" selection-start-line="143" selection-start-column="2" selection-end-line="143" selection-end-column="2" />
+                <state relative-caret-position="36">
+                  <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="80" />
                   <folding>
                     <element signature="e#822#4267#0" expanded="false" />
                     <element signature="e#5960#7610#0" expanded="false" />
@@ -154,12 +166,12 @@
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/cache_list.c" />
         <option value="$PROJECT_DIR$/src/cache_list.h" />
-        <option value="$PROJECT_DIR$/src/window.h" />
-        <option value="$PROJECT_DIR$/src/window.c" />
         <option value="$PROJECT_DIR$/src/client.c" />
         <option value="$PROJECT_DIR$/src/server.c" />
         <option value="$PROJECT_DIR$/src/rudp_packet.h" />
         <option value="$PROJECT_DIR$/src/rudp_packet.c" />
+        <option value="$PROJECT_DIR$/src/window.h" />
+        <option value="$PROJECT_DIR$/src/window.c" />
       </list>
     </option>
   </component>
@@ -424,12 +436,12 @@
       <workItem from="1479857406405" duration="3940000" />
       <workItem from="1479868341495" duration="1961000" />
       <workItem from="1481068399343" duration="24000" />
-      <workItem from="1481068644614" duration="701000" />
+      <workItem from="1481068644614" duration="2833000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78241000" />
+    <option name="totallyTimeSpent" value="80373000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="1001" extended-state="6" />
@@ -714,7 +726,12 @@
         <state relative-caret-position="2772">
           <caret line="154" column="1" selection-start-line="154" selection-start-column="1" selection-end-line="154" selection-end-column="1" />
           <folding>
-            <element signature="e#192#685#0" expanded="false" />
+            <element signature="e#352#1484#0" expanded="false" />
+            <element signature="e#1486#2669#0" expanded="false" />
+            <element signature="e#2671#3322#0" expanded="false" />
+            <element signature="e#3324#4107#0" expanded="false" />
+            <element signature="e#4109#7576#0" expanded="false" />
+            <element signature="e#7578#8729#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -723,7 +740,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#475#494#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -785,7 +804,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#475#494#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -894,14 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/window.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="72" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -912,8 +925,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="143" column="2" selection-start-line="143" selection-start-column="2" selection-end-line="143" selection-end-column="2" />
+        <state relative-caret-position="36">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="80" />
           <folding>
             <element signature="e#822#4267#0" expanded="false" />
             <element signature="e#5960#7610#0" expanded="false" />
@@ -921,28 +934,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/window.c">
+    <entry file="file://$PROJECT_DIR$/src/rudp_packet.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="156" column="6" selection-start-line="156" selection-start-column="6" selection-end-line="157" selection-end-column="50" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="80" />
+          <folding>
+            <element signature="e#475#494#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rudp_packet.h">
+    <entry file="file://$PROJECT_DIR$/src/window.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1044">
-          <caret line="65" column="46" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
+        <state relative-caret-position="126">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rudp_packet.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-486">
-          <caret line="117" column="33" selection-start-line="117" selection-start-column="33" selection-end-line="117" selection-end-column="33" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="80" />
           <folding>
-            <element signature="e#192#685#0" expanded="false" />
+            <element signature="e#352#1484#0" expanded="false" />
+            <element signature="e#1486#2669#0" expanded="false" />
+            <element signature="e#2671#3322#0" expanded="false" />
+            <element signature="e#3324#4107#0" expanded="false" />
+            <element signature="e#4109#7576#0" expanded="false" />
+            <element signature="e#7578#8729#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/window.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#337#787#0" expanded="false" />
+            <element signature="e#789#1577#0" expanded="false" />
+            <element signature="e#1579#2692#0" expanded="false" />
+            <element signature="e#2694#4201#0" expanded="false" />
+            <element signature="e#4203#4933#0" expanded="false" />
+            <element signature="e#4935#6525#0" expanded="false" />
+            <element signature="e#6527#7054#0" expanded="false" />
+            <element signature="e#7056#7675#0" expanded="false" />
           </folding>
         </state>
       </provider>
