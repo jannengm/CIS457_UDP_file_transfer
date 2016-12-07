@@ -12,7 +12,7 @@
  * @param size - The size of the data parameter
  * @return pkt - A newly allocated pointer to an RUDP packet
  ******************************************************************************/
-rudp_packet_t * create_rudp_packet(void * data, size_t size, u_int32_t * seq_num){
+rudp_packet_t * create_rudp_packet(void *data, size_t size, u_int32_t *seq_num){
     static u_int32_t seq;
     u_int16_t checksum;
 
@@ -73,6 +73,12 @@ u_int16_t calc_checksum(rudp_packet_t * rudp_pk){
     return checksum;
 }
 
+/*******************************************************************************
+ * Checks if the checksum of rudp_pkt is correct. Returns TRUE if so, else FALSE
+ *
+ * @param rudp_pkt - The RUDP packet to check
+ * @return TRUE or FALSE
+ ******************************************************************************/
 bool check_checksum(rudp_packet_t * rudp_pkt){
     bool is_good = FALSE;
 
@@ -105,6 +111,19 @@ void send_rudp_ack(int sockfd, struct sockaddr *serveraddr, rudp_packet_t * rudp
     sendto(sockfd, &ack, RUDP_HEAD, 0, serveraddr, sizeof(struct sockaddr_in));
 }
 
+/*******************************************************************************
+ * Sends an RUDP packet (rudp_pkt) of a given size (size) to the destination
+ * specified (destaddr) over the specified socket (sockfd). Waits a specified
+ * amount of time (req) for an acknowledgement, then resends if no
+ * acknowledgement was received. 
+ *
+ * @param sockfd
+ * @param destaddr
+ * @param rudp_pkt
+ * @param size
+ * @param ack_pkt
+ * @param req
+ ******************************************************************************/
 void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_pkt,
                    size_t size, rudp_packet_t * ack_pkt, struct timespec * req){
     struct pollfd fd;
@@ -149,8 +168,6 @@ void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_p
             memset(buffer, 0, MAX_LINE);
             buf_len = (int)recvfrom(sockfd, buffer, MAX_LINE, 0, destaddr, &len);
             ack = (rudp_packet_t *)buffer;
-//            fprintf(stdout, "\nGot %d byte packet\n", buf_len);
-//            good_checksum = print_rudp_packet(ack);
             good_checksum = check_checksum(rudp_pkt);
             if(good_checksum &&
                     ack->seq_num == rudp_pkt->seq_num &&
@@ -171,7 +188,11 @@ void send_and_wait(int sockfd, struct sockaddr *destaddr, rudp_packet_t * rudp_p
     }
 }
 
-
+/*******************************************************************************
+ *
+ * @param rudp_pkt
+ * @return
+ ******************************************************************************/
 bool print_rudp_packet(rudp_packet_t * rudp_pkt){
 //    u_int16_t orig_checksum = rudp_pkt->checksum;
 //    rudp_pkt->checksum = 0;

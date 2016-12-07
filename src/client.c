@@ -8,6 +8,12 @@
 #include "rudp_packet.h"
 #include <time.h>
 
+/*******************************************************************************
+ *
+ * @param argc
+ * @param argv
+ * @return
+ ******************************************************************************/
 int main(int argc, char **argv){
     int sockfd, count, len;
     ssize_t bytes_read;

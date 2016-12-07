@@ -19,11 +19,11 @@ struct thread_arg_t{
 
 typedef struct thread_arg_t thread_arg_t;
 
-//void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file);
 void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file,
                struct timespec * req);
 void * get_acks(void * arg);
 
+/*Global semaphors for thread operations*/
 pthread_mutex_t window_lock;
 pthread_mutex_t flag_lock;
 bool file_finished;

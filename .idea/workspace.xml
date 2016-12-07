@@ -12,13 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c327320-1290-49e8-8094-93461e1373dd" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Project_4.iml" afterPath="$PROJECT_DIR$/.idea/Project_4.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client.c" afterPath="$PROJECT_DIR$/src/client.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/rudp_packet.c" afterPath="$PROJECT_DIR$/src/rudp_packet.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/rudp_packet.h" afterPath="$PROJECT_DIR$/src/rudp_packet.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server.c" afterPath="$PROJECT_DIR$/src/server.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/window.c" afterPath="$PROJECT_DIR$/src/window.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/window.h" afterPath="$PROJECT_DIR$/src/window.h" />
     </list>
     <ignored path="Project_4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,22 +35,27 @@
     <window id="2">
       <content type="file-editors">
         <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file leaf-file-name="rudp_packet.h" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/rudp_packet.h">
+          <leaf>
+            <file leaf-file-name="rudp_packet.c" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/rudp_packet.c">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="678">
-                    <caret line="46" column="46" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
-                    <folding />
+                  <state relative-caret-position="-486">
+                    <caret line="117" column="33" selection-start-line="117" selection-start-column="33" selection-end-line="117" selection-end-column="33" />
+                    <folding>
+                      <element signature="e#192#1324#0" expanded="false" />
+                      <element signature="e#1326#2509#0" expanded="false" />
+                      <element signature="e#3123#3887#0" expanded="false" />
+                      <element signature="e#6497#7694#0" expanded="false" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="window.h" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/src/window.h">
+            <file leaf-file-name="window.c" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/window.c">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="360">
-                    <caret line="20" column="72" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
+                  <state relative-caret-position="748">
+                    <caret line="156" column="6" selection-start-line="156" selection-start-column="6" selection-end-line="157" selection-end-column="50" />
                     <folding />
                   </state>
                 </provider>
@@ -64,30 +68,22 @@
     <window id="1">
       <content type="file-editors">
         <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file leaf-file-name="rudp_packet.c" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/src/rudp_packet.c">
+          <leaf>
+            <file leaf-file-name="rudp_packet.h" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/rudp_packet.h">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="468">
-                    <caret line="121" column="50" selection-start-line="121" selection-start-column="50" selection-end-line="121" selection-end-column="50" />
-                    <folding>
-                      <element signature="e#192#685#0" expanded="false" />
-                      <element signature="e#192#1326#0" expanded="false" />
-                      <element signature="e#1328#1868#0" expanded="false" />
-                      <element signature="e#1328#2511#0" expanded="false" />
-                      <element signature="e#2808#3216#0" expanded="false" />
-                      <element signature="e#2808#3572#0" expanded="false" />
-                      <element signature="e#5780#6782#0" expanded="false" />
-                    </folding>
+                  <state relative-caret-position="1044">
+                    <caret line="65" column="46" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
+                    <folding />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="window.c" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/window.c">
+            <file leaf-file-name="window.h" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/window.h">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="804">
-                    <caret line="156" column="6" selection-start-line="156" selection-start-column="6" selection-end-line="157" selection-end-column="50" />
+                  <state relative-caret-position="360">
+                    <caret line="20" column="72" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
                     <folding />
                   </state>
                 </provider>
@@ -119,10 +115,11 @@
           <file leaf-file-name="server.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/server.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="662">
-                  <caret line="165" column="16" selection-start-line="165" selection-start-column="16" selection-end-line="165" selection-end-column="16" />
+                <state relative-caret-position="418">
+                  <caret line="143" column="2" selection-start-line="143" selection-start-column="2" selection-end-line="143" selection-end-column="2" />
                   <folding>
-                    <element signature="e#166#189#0" expanded="true" />
+                    <element signature="e#822#4267#0" expanded="false" />
+                    <element signature="e#5960#7610#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -135,11 +132,9 @@
           <file leaf-file-name="client.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/client.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="410">
-                  <caret line="64" column="58" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
-                  <folding>
-                    <element signature="e#166#189#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="198">
+                  <caret line="15" column="80" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="80" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -160,11 +155,11 @@
         <option value="$PROJECT_DIR$/src/cache_list.c" />
         <option value="$PROJECT_DIR$/src/cache_list.h" />
         <option value="$PROJECT_DIR$/src/window.h" />
-        <option value="$PROJECT_DIR$/src/rudp_packet.h" />
-        <option value="$PROJECT_DIR$/src/server.c" />
-        <option value="$PROJECT_DIR$/src/client.c" />
-        <option value="$PROJECT_DIR$/src/rudp_packet.c" />
         <option value="$PROJECT_DIR$/src/window.c" />
+        <option value="$PROJECT_DIR$/src/client.c" />
+        <option value="$PROJECT_DIR$/src/server.c" />
+        <option value="$PROJECT_DIR$/src/rudp_packet.h" />
+        <option value="$PROJECT_DIR$/src/rudp_packet.c" />
       </list>
     </option>
   </component>
@@ -428,11 +423,13 @@
       <workItem from="1479834834231" duration="4463000" />
       <workItem from="1479857406405" duration="3940000" />
       <workItem from="1479868341495" duration="1961000" />
+      <workItem from="1481068399343" duration="24000" />
+      <workItem from="1481068644614" duration="701000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77516000" />
+    <option name="totallyTimeSpent" value="78241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="1001" extended-state="6" />
@@ -509,7 +506,8 @@
         <state relative-caret-position="1692">
           <caret line="94" column="25" selection-start-line="94" selection-start-column="25" selection-end-line="94" selection-end-column="25" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -518,9 +516,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1170">
           <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -537,7 +533,8 @@
         <state relative-caret-position="2592">
           <caret line="144" column="31" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -546,9 +543,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -565,7 +560,8 @@
         <state relative-caret-position="2196">
           <caret line="122" column="26" selection-start-line="122" selection-start-column="26" selection-end-line="122" selection-end-column="26" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -574,9 +570,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -593,7 +587,8 @@
         <state relative-caret-position="4248">
           <caret line="236" column="45" selection-start-line="236" selection-start-column="45" selection-end-line="236" selection-end-column="45" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -602,9 +597,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -621,7 +614,8 @@
         <state relative-caret-position="3888">
           <caret line="216" column="17" selection-start-line="216" selection-start-column="17" selection-end-line="216" selection-end-column="17" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -630,9 +624,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -649,7 +641,8 @@
         <state relative-caret-position="1512">
           <caret line="84" column="14" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -658,9 +651,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -677,7 +668,8 @@
         <state relative-caret-position="450">
           <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -686,9 +678,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -705,7 +695,8 @@
         <state relative-caret-position="450">
           <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -714,9 +705,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1368">
           <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -726,12 +715,6 @@
           <caret line="154" column="1" selection-start-line="154" selection-start-column="1" selection-end-line="154" selection-end-column="1" />
           <folding>
             <element signature="e#192#685#0" expanded="false" />
-            <element signature="e#192#1326#0" expanded="false" />
-            <element signature="e#1328#1868#0" expanded="false" />
-            <element signature="e#1328#2511#0" expanded="false" />
-            <element signature="e#2808#3216#0" expanded="false" />
-            <element signature="e#2808#3572#0" expanded="false" />
-            <element signature="e#5780#6782#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -757,7 +740,8 @@
         <state relative-caret-position="1278">
           <caret line="71" column="1" selection-start-line="71" selection-start-column="1" selection-end-line="71" selection-end-column="1" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -766,9 +750,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -785,7 +767,8 @@
         <state relative-caret-position="144">
           <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -794,9 +777,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="990">
           <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -821,7 +802,8 @@
         <state relative-caret-position="1404">
           <caret line="78" column="43" selection-start-line="78" selection-start-column="43" selection-end-line="78" selection-end-column="43" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -830,9 +812,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -849,7 +829,8 @@
         <state relative-caret-position="1404">
           <caret line="78" column="43" selection-start-line="78" selection-start-column="43" selection-end-line="78" selection-end-column="43" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -858,9 +839,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -877,7 +856,8 @@
         <state relative-caret-position="954">
           <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -886,9 +866,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -916,14 +894,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rudp_packet.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="678">
-          <caret line="46" column="46" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/window.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -932,46 +902,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server.c">
+    <entry file="file://$PROJECT_DIR$/src/client.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="662">
-          <caret line="165" column="16" selection-start-line="165" selection-start-column="16" selection-end-line="165" selection-end-column="16" />
-          <folding>
-            <element signature="e#166#189#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="198">
+          <caret line="15" column="80" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="80" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rudp_packet.c">
+    <entry file="file://$PROJECT_DIR$/src/server.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="121" column="50" selection-start-line="121" selection-start-column="50" selection-end-line="121" selection-end-column="50" />
+        <state relative-caret-position="418">
+          <caret line="143" column="2" selection-start-line="143" selection-start-column="2" selection-end-line="143" selection-end-column="2" />
           <folding>
-            <element signature="e#192#685#0" expanded="false" />
-            <element signature="e#192#1326#0" expanded="false" />
-            <element signature="e#1328#1868#0" expanded="false" />
-            <element signature="e#1328#2511#0" expanded="false" />
-            <element signature="e#2808#3216#0" expanded="false" />
-            <element signature="e#2808#3572#0" expanded="false" />
-            <element signature="e#5780#6782#0" expanded="false" />
+            <element signature="e#822#4267#0" expanded="false" />
+            <element signature="e#5960#7610#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/window.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="804">
+        <state relative-caret-position="748">
           <caret line="156" column="6" selection-start-line="156" selection-start-column="6" selection-end-line="157" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client.c">
+    <entry file="file://$PROJECT_DIR$/src/rudp_packet.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="64" column="58" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
+        <state relative-caret-position="1044">
+          <caret line="65" column="46" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rudp_packet.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-486">
+          <caret line="117" column="33" selection-start-line="117" selection-start-column="33" selection-end-line="117" selection-end-column="33" />
           <folding>
-            <element signature="e#166#189#0" expanded="true" />
+            <element signature="e#192#685#0" expanded="false" />
           </folding>
         </state>
       </provider>
