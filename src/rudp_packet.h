@@ -18,6 +18,7 @@
 #define RUDP_DATA 948       /*Size of RUDP data segment*/
 #define MAX_LINE 1024       /*Maximum input buffer size*/
 #define WINDOW_SIZE 5       /*Size of sliding window*/
+#define MAX_ATTEMPTS 5      /*Maximum number of times to resend*/
 
 /*RUDP types*/
 #define DATA_PKT 0          /*Normal data packet*/
