@@ -1,17 +1,24 @@
 /*******************************************************************************
+ * CIS 457 - Project 4: Reliable File Transfer over UDP
+ * Reliable UDP Client
+ * @author Mark Jannenga
  *
+ * This program implements a file transfer client using UDP packets with added
+ * reliability functioonality, similar to that of TCP. It sends a request for
+ * a file to the server, and, once the server confirms the connection, listens
+ * for Reliable UDP (RUDP) packets, writes them to file, and sends
+ * acknowledgements for those packets.
  ******************************************************************************/
 
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
 #include "rudp_packet.h"
 #include <time.h>
 
 /*******************************************************************************
+ * Client main method. Expects a port number, the IPv4 address of the server,
+ * and an optional filename as command line arguments.
  *
  * @param argc
- * @param argv
+ * @param argv - [Port] [IP] [Filename (optional)]
  * @return
  ******************************************************************************/
 int main(int argc, char **argv){

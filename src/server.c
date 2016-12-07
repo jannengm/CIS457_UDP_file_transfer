@@ -1,10 +1,15 @@
 /*******************************************************************************
+ * CIS 457 - Project 4: Reliable File Transfer over UDP
+ * Reliable UDP File Server
+ * @author Mark Jannenga
  *
+ * This program implements a file transfer server using UDP packets with added
+ * reliability functionality, similar to that of TCP. Once started, the server
+ * waits for a Reliable UDP (RUDP) packet of type SYN with a requested file in
+ * the packet body. Once connected, the server sends the file using a sliding
+ * window of RUDP packets.
  ******************************************************************************/
 
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
 #include "rudp_packet.h"
 #include "window.h"
 #include <pthread.h>
@@ -12,27 +17,31 @@
 #define SEC_TO_NSEC 1000000000          /*Number of nanoseconds in 1 second*/
 #define DEFAULT_TIMEOUT 100000000       /*Default timeout is 0.1 seconds*/
 
+/*Custom struct for passing needed information to child thread*/
 struct thread_arg_t{
     window_t * window;
     int sockfd;
 };
 
+/*Typedef*/
 typedef struct thread_arg_t thread_arg_t;
 
+/*Function prototypes*/
 void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file,
                struct timespec * req);
 void * get_acks(void * arg);
 
-/*Global semaphors for thread operations*/
+/*Global semaphores for thread operations*/
 pthread_mutex_t window_lock;
 pthread_mutex_t flag_lock;
 bool file_finished;
 
 /*******************************************************************************
- * Server main method. Expects a port number as a command line argument
+ * Server main method. Expects a port number and an optional time parameter
+ * defining how long to wait for acknowledgements as command line arguments.
  *
  * @param argc
- * @param argv
+ * @param argv - [Port] [Timeout(s) (optional)]
  * @return
  ******************************************************************************/
 int main(int argc, char **argv){
@@ -47,7 +56,7 @@ int main(int argc, char **argv){
 
     /*Check command line arguments*/
     if(argc < 2 || argc > 3){
-        fprintf(stderr, "Usage: %s [Port] [Timeout (optional)]\n", argv[0]);
+        fprintf(stderr, "Usage: %s [Port] [Timeout(s) (optional)]\n", argv[0]);
         exit(1);
     }
 
@@ -141,10 +150,13 @@ int main(int argc, char **argv){
 }
 
 /*******************************************************************************
+ * Sends a file (file) to the client (clientaddr) over the specified socket
+ * (sockfd). Takes additional time parameter (req) to specify how long to wait
+ * between sending windows.
  *
- * @param sockfd
- * @param clientaddr
- * @param file
+ * @param sockfd - The socket to send the file over
+ * @param clientaddr - The client to send the file to
+ * @param file - The file to send
  ******************************************************************************/
 void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file,
                struct timespec * req){
@@ -204,8 +216,11 @@ void send_file(int sockfd, struct sockaddr* clientaddr, FILE *file,
 }
 
 /*******************************************************************************
+ * Runs in parallel to the main thread to listen for acknowledgement packets.
+ * Gets pointers to the sliding window and the socket as a pointer to a
+ * thread_arg_t struct (arg). Uses mutex semaphores when accessing the window.
  *
- * @param arg
+ * @param arg - Sliding window and socket
  * @return
  ******************************************************************************/
 void * get_acks(void * arg){
